@@ -1,11 +1,11 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const { sequelize } = require("../config/db");
 
 const UserTable = sequelize.define(
   'user_table',
   {
     role: {
-      type: DataTypes.ENUM('admin', 'user', 'guest'),
+      type: DataTypes.ENUM('admin', 'user'),
       defaultValue: 'user',
       allowNull: false,
     },
@@ -54,7 +54,7 @@ const UserTable = sequelize.define(
     },
   },
   {
-    freezeTableName: true, // This option disables pluralization
+    freezeTableName: true, 
   }
 );
 
