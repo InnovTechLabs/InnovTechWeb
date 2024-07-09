@@ -1,5 +1,5 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
+const { sequelize } = require("../config/db");
 
 const UserTable = sequelize.define(
   'user_table',
@@ -13,6 +13,11 @@ const UserTable = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: false,
     },
     firstname: {
       type: DataTypes.STRING,
@@ -30,34 +35,27 @@ const UserTable = sequelize.define(
         isEmail: true,
       },
     },
-    sex: {
-      type: DataTypes.ENUM('male', 'female', 'Rather not say'),
+    dialcode: {
+      type: DataTypes.STRING,
       allowNull: false,
-    },
-    dialcode : {
-        type : DataTypes.STRING,
-        allowNull : false,
-        unique : false,
-        validate : {
-            min : 1,
-            max : 3
-        }
-
+      unique: false,
+      validate: {
+        min: 1,
+        max: 3,
+      },
     },
     phonenumber: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
       validate: {
-        len: [10, 10], 
+        len: [10, 10],
       },
     },
   },
   {
-    timestamps: true,
-    underscored: true,
+    freezeTableName: true, // This option disables pluralization
   }
 );
-
 
 module.exports = UserTable;
