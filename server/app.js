@@ -20,12 +20,14 @@ const { db_connection, sequelize } = require('./config/db');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//route
 app.use("/", user_route)
 
 
 //start server
 app.listen(PORT, async() => {
     await db_connection(); 
+    //dont touch this comment, this is will re-create the tables and all the records will be deleted
     // await sequelize.sync();
     console.log('Database synced!');
     console.log("Server running successfully");
