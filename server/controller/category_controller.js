@@ -75,5 +75,33 @@ module.exports = {
         } catch (error) {
             console.log(error);
         }
+    },
+    
+    DELETECategory : async(req, res) => {
+        const {category_id} = req.params
+        const {category_name, category_description} = req.body
+
+        
+        try {
+            const category = await CategoryTable.findOne({
+                where : {
+                    id : category_id,
+                    category_name : category_name,
+                    category_description : category_description
+                }
+            })
+
+            if(!category){
+                res.status(404).json({message : "Category Not Found"})
+            }
+            else{
+                await category.destroy();
+                res.status(200).json({message : "Category Removed Successfully"})
+            }
+            
+            
+        } catch (error) {
+            console.log(error);
+        }
     }
 }

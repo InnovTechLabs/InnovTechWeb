@@ -6,5 +6,6 @@ route.get('/category/all-categories', category_controller.GETAllCategories)
 route.get('/category/:category_name', category_controller.GETCategoryByName)
 route.post('/category/add-category', category_controller.POSTCategory)
 route.put('/category/update-category/:category_id', category_controller.PUTCategory)
+route.delete('/category/delete-category/:category_id', category_controller.DELETECategory)
 
 module.exports = route
