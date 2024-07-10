@@ -19,7 +19,3 @@ module.exports = {
     db_connection,
     sequelize
 }
-
-
-
-

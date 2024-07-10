@@ -7,6 +7,7 @@ const app = express()
 const PORT = process.env.BACKEND_PORT || 5000;
 
 const user_route = require("./routes/user_route")
+const category_table = require("./routes/category_route")
 
 //tables to be synchorized
 const CategoryTable = require('./models/category_table');
@@ -22,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //route
 app.use("/", user_route)
+app.use("/", category_table)
 
 
 //start server
