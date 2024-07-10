@@ -13,7 +13,7 @@ const ServiceTable = sequelize.define(
             }
         },
         service_name : {
-            type : DataTypes.INTEGER,
+            type : DataTypes.STRING,
             allowNull : false,
             unique : true
         },
