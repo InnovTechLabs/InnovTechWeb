@@ -1,4 +1,5 @@
-const CategoryTable = require("../models/category_table")
+const CategoryTable = require("../models/category_table");
+const ServiceTable = require("../models/service_table");
 
 module.exports = {
     GETAllCategories : async(req, res) => {
@@ -91,10 +92,22 @@ module.exports = {
                 }
             })
 
+
             if(!category){
                 res.status(404).json({message : "Category Not Found"})
             }
             else{
+                const services = await ServiceTable.findAll({
+                    where : {
+                        category_id : category_id
+                    }
+                })
+
+                await ServiceTable.destroy({
+                    where: {
+                        category_id: category_id
+                    }
+                });
                 await category.destroy();
                 res.status(200).json({message : "Category Removed Successfully"})
             }
