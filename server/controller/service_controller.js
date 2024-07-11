@@ -8,7 +8,6 @@ module.exports = {
             console.log(error);
         }
     },
-
     GETAllServicesByCategory : async(req, res) => {
         const {category_id} = req.params
         try {
@@ -27,7 +26,6 @@ module.exports = {
             console.log(error);
         }
     },
-
     POSTService : async(req, res) => {
         const {category_id} = req.params
         const {service_name} = req.body
@@ -75,7 +73,6 @@ module.exports = {
             console.log(error);
         }
     },
-    
     DELETEService : async(req, res) => {
         const {service_id} = req.params
         const {service_name} = req.body
