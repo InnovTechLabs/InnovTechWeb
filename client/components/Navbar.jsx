@@ -1,6 +1,8 @@
-import React from 'react'
 import Image from 'next/image'
 import NavLogo from "@/public/assets/images/logo/logo@2x.png"
+import BoxLogo from "@/public/assets/images/img-box/button.svg"
+import Menu from "@/public/assets/images/icon/menu.png"
+import MenuClose from "@/public/assets/images/icon/close.png"
 
 export default function Navbar() {
     const NavHeadings = [
@@ -65,29 +67,49 @@ export default function Navbar() {
         path : "/",
         subpath : ""}
     ]
-    
+
   return (
     <>
     <div className='mx-auto'>
-        <div className='flex flex-row justify-evenly items-center'>
+        <div className='flex flex-row justify-evenly items-center pt-5'>
             <div className='cursor-pointer'>
                 <Image
                 src={NavLogo}
                 alt='NavLogo'
                 width={190}
-                height={190} 
+                height={190}
             />
             </div>
-            <div>
-
-
+            <div className='hidden lg:flex flex-row space-x-8 '>
+                {NavHeadings.map((heading, index) => 
+                    heading.subpath ? (
+                        <div key={index}>{heading.text}</div>
+                    ) : (
+                        <div key={index} className=''>{heading.text}</div>
+                    )
+                )}
             </div>
-            <div>
-                <span>2</span>
+            <div className='hidden sm:flex flex-row space-x-10'>
+                <div>
+                    <Image
+                        src={BoxLogo}
+                        alt='BoxLogo'
+                    />
+                </div>
+                <div>
+                    <button>
+                        <span>Get Started</span>
+                    </button>
+                </div>
             </div>
-            <div>
-                <span>2</span>
-            </div>
+            <div className='flex flex-row lg:hidden'>
+                    <Image
+                        src={Menu}
+                        alt='MenuIcon'
+                        width={25}
+                        height={25}
+                    />
+                </div>
         </div>
     </div>
     </>
