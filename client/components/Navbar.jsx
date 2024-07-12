@@ -3,6 +3,7 @@ import NavLogo from "@/public/assets/images/logo/logo@2x.png"
 import BoxLogo from "@/public/assets/images/img-box/button.svg"
 import Menu from "@/public/assets/images/icon/menu.png"
 import MenuClose from "@/public/assets/images/icon/close.png"
+import DropDown from "@/public/assets/images/icon/dropdown.svg"
 
 export default function Navbar() {
     const NavHeadings = [
@@ -11,7 +12,7 @@ export default function Navbar() {
         subpath : ""},
 
         {text : "Service", 
-        path : "/services",
+        path : "/service",
         subpath : [
             {subText : "Digital Marketing", 
             subsubPath : "/service/digital-marketing"},
@@ -39,16 +40,16 @@ export default function Navbar() {
         path : "/page",
         subpath : [
             {subText : "About",
-            subsubPath : "/pages/about"},
+            subsubPath : "/page/about"},
 
             {subText : "Our Team",
-            subsubPath : "/pages/our-team"},
+            subsubPath : "/page/our-team"},
 
             {subText : "Our FAQ",
-            subsubPath : "/pages/our-faq"},
+            subsubPath : "/page/our-faq"},
 
             {subText : "Career",
-            subsubPath : "/pages/career"}
+            subsubPath : "/page/career"}
         ]},
 
         {text : "Portfolio",
@@ -64,7 +65,7 @@ export default function Navbar() {
         subpath : ""},
 
         {text : "Search Icon",
-        path : "/",
+        path : "/search",
         subpath : ""}
     ]
 
@@ -83,9 +84,16 @@ export default function Navbar() {
             <div className='hidden lg:flex flex-row space-x-8 '>
                 {NavHeadings.map((heading, index) => 
                     heading.subpath ? (
-                        <div key={index}>{heading.text}</div>
+                        <div key={index} className='group relative dropdown tracking-wider flex flex-row items-center cursor-pointer'>
+                            {heading.text}{<Image src={DropDown} alt = "DropDown" width={20} height={20}/>}
+                            <div className="group-hover:block dropdown-menu absolute hidden h-0 w-64 top-3 py-7">
+                                    {heading.subpath.map((subheadings) => (
+                                        <div className='group block hover:text-purple-700 cursor-pointer py-2'>{subheadings.subText}</div>
+                                    ))}
+                            </div>
+                        </div>
                     ) : (
-                        <div key={index} className=''>{heading.text}</div>
+                        <div key={index} className='cursor-pointer'>{heading.text}</div>
                     )
                 )}
             </div>
