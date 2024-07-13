@@ -7,6 +7,16 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    colors : {
+      purple : '#8B54FF',
+      yellow : "#FFD80D",
+      black : "#010C2A",
+      cream : "#FFF4E7"
+    },
+    fontFamily : {
+      manrope : ['Manrope', 'sans-serif'],
+      nunito : ['Nunito']
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
