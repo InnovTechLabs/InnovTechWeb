@@ -9,7 +9,7 @@ import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 export default function Footer() {
   return (
     <>
-    <div className='mx-auto px-10'>
+    <div className='mx-auto px-5'>
         <div className='flex flex-col space-y-10 md:flex-row md:items-start md:justify-around md:px-32 md:space-x-32'>
 
             <div className='w-full space-y-5 md:flex-1 md:flex-col md:w-1/4'>
@@ -29,9 +29,9 @@ export default function Footer() {
             </div>
 
             <div className='flex-1'>
-                <div className='flex flex-col space-y-5'>
+                <div className='flex-col space-y-5'>
                     <p className=''>Quick Links</p>
-                    <div className='flex flex-row justify-between'>
+                    <div className='flex flex-row justify-between md:flex-col lg:space-y-3 xl:flex-row'>
                             <ul className='space-y-3'>
                                 <li>Services</li>
                                 <li>Our Pricing</li>
@@ -76,10 +76,10 @@ export default function Footer() {
                 </div>
             </div>
         </div>
-        <div className='py-12'>
+        <div className='py-10'>
             <hr />
         </div> 
-        <div className='flex flex-col items-center justify-center space-y-4 md:justify-between md:flex-row md:px-32 md:space-x-32'>
+        <div className='flex flex-col items-center justify-center space-y-4 lg:justify-between lg:flex-row md:px-32 lg:space-x-12'>
             <p>&copy; 2024 <span>INNOV</span> All rights reserved.</p>
             <div className='flex flex-row items-center space-x-5'>
                 <span>About</span>

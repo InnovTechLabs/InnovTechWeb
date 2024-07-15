@@ -7,7 +7,8 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Strategic Digital Marketing and Expert Web Development in Nepal | Innov Tech",
   description: "In Kathmandu, Nepal, our agency crafts exceptional websites and executes effective digital strategies for impactful online presence",
-  keywords : "Kathmandu web development agency, Digital marketing Kathmandu Nepal, Kathmandu web design and marketing, Nepal digital solutions provider,Kathmandu online presence experts"
+  keywords : "Kathmandu web development agency, Digital marketing Kathmandu Nepal, Kathmandu web design and marketing, Nepal digital solutions provider,Kathmandu online presence experts",
+  
 };
 
 export default function RootLayout({

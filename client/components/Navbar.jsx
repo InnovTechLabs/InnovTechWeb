@@ -20,7 +20,7 @@ export default function Navbar() {
   return (
     <>
     <div className='mx-auto font-manrope font-bold space-y-5'>
-        <div className='flex flex-row  justify-between items-center pt-3 mx-10'>
+        <div className='flex flex-row justify-between items-center pt-3 mx-5 md:px-10'>
             <div className='cursor-pointer'>
                 <Image
                 src={NavLogo}
@@ -29,25 +29,28 @@ export default function Navbar() {
                 height={190}
             />
             </div>
-            <div className='hidden xl:flex flex-row space-x-8 '>
+
+            <div className='hidden xl:flex flex-row mr-16 px-16 py-6 border-[1px] [box-shadow:10_10px_0_0_]'>
                 {NavHeadings.map((heading, index) => 
                     heading.subpath ? (
-                        <div key={index} className='group relative dropdown tracking-wider flex flex-row items-center cursor-pointer'>
+                        <div key={index} className='group flex flex-row items-center cursor-pointer relative tracking-wider px-3 py-1 transition-all duration-300 ease-in-out hover:bg-purple hover:text-white hover:[box-shadow:5px_5px_0_0_#010C2A] hover:rounded-md'>
                             {heading.text}{<Image src={DropDown} alt = "DropDown" width={20} height={20}/>}
-                            <div className="group-hover:block dropdown-menu absolute hidden h-0 w-64 top-3 py-7">
+                            <div className="dropdown-menu absolute hidden transition-all delay-900 ease-in-out h-2 top-8 py-2 w-72 group-hover:grid">
                                 {heading.subpath.map((subheadings, subIndex) => (
-                                    <div className='group block hover:text-purple cursor-pointer py-2' key={subIndex}>{subheadings.subText}</div>
+                                    <div className='cursor-pointer bg-white text-black border-b-gray shadow-lg shadow-purple px-5 py-5 border-b-[1px] transition-all delay-200 ease-in-out hover:pl-10 hover:text-purple' key={subIndex}>{subheadings.subText}</div>
                                 ))}
                             </div>
                         </div>
                     ) : (
-                        <div key={index} className='cursor-pointer'>{heading.text}</div>
+                        <div key={index} className='cursor-pointer px-4 py-1 transition-all duration-300 ease-in-out hover:bg-purple hover:text-white hover:rounded-md hover:[box-shadow:3px_4px_0_0_#010C2A]'>{heading.text}</div>
                     )
                 )}
             </div>
+            
+            
             <div className='hidden sm:flex flex-row items-center space-x-10'>
                 <div className='hidden lg:block'>
-                    <button className='bg-yellow px-7 py-7'>
+                    <button className='bg-yellow px-7 py-7 border-[1px] [box-shadow:7px_7px_0_0_] transition-all duration-300 hover:border-[1px] hover:[box-shadow:4px_4px_0_0_]'>
                         <Image
                             src={BoxLogo}
                             alt='BoxLogo'
@@ -55,8 +58,8 @@ export default function Navbar() {
                     </button>
                 </div>
                 <div>
-                    <button className='bg-purple px-10 py-4'>
-                        <span>Get Started</span>
+                    <button className='bg-purple px-10 py-3 [box-shadow:5_5px_0_0_] transition-all duration-700 ease-in-out hover:[box-shadow:10px_10px_0_0_#FFD80D] hover:m-3 hover:bg-black'>
+                        <span className='text-white'>Get Started </span>
                     </button>
                 </div>
             </div>

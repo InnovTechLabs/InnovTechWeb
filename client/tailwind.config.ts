@@ -11,7 +11,9 @@ const config: Config = {
       purple : '#8B54FF',
       yellow : "#FFD80D",
       black : "#010C2A",
-      cream : "#FFF4E7"
+      gray :  "#F2F0ED",
+      cream : "#FFF3E6",
+      white : "#FFFFFF"
     },
     fontFamily : {
       manrope : ['Manrope', 'sans-serif'],
