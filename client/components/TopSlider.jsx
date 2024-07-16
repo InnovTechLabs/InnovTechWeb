@@ -40,44 +40,46 @@ export default function TopSlider() {
   }
 
   return (
-    <div className="mx-auto px-10">
-      <div className="flex flex-none justify-around items-center">
+    <div className="mx-auto px-10 my-32">
+      <div className="flex flex-none justify-between">
         <button onClick={handlePreviousContent} className="hidden md:block">
           <p>Previous</p>
         </button>
-        <div className="flex flex-col-reverse lg:flex-row items-center">
-          <div className="flex flex-col w-50 h-96 overflow-hidden">
+        <div className="flex flex-col-reverse items-start lg:flex-row">
+          <div className="w-1/2 py-14 space-y-5">
+          <p className="text-2xl">Web Design Agency In Nepal</p>
             {sliderData.map((data, index) => (
-              <div key={index} className={`py-24 ${activeIndex === index ? "block" : "hidden"}`}>
-                <p className="text-2xl">Web Design Agency In Nepal</p>
-                <p className="text-7xl">{data.category_name}</p>
-                <p className="text-xl">{data.category_description}</p>
+              <div key={index}>
+                <div className={`space-y-5 md:h-64 md:w-64 ${activeIndex === index ? "" : "hidden"}`}>
+                  <p className="text-7xl w-min text-navyblue capitalize underline underline-offset-8 font-bold">{data.category_name}</p>
+                  <p className="text-xl">{data.category_description}</p>
+                </div>
               </div>
             ))}
-            <div className="flex flex-row justify-center space-x-2">
-              {sliderData.map((_, index) => (
-                <button key={index} onClick={() => setActiveIndex(index)}>
-                  <FontAwesomeIcon 
-                    icon={faCircle}
-                    className={activeIndex === index ? "border-[1px] size-2 rounded-full p-2 transition-all ease-in-out" : "text-black size-2 transition-all delay-100 ease-in-out"}
-                  />
-                </button>
-              ))}
-            </div>
           </div>
-          <div className="flex flex-1 w-50 h-96 overflow-hidden">
+          <div className="">
             <Image
               src={sampleImage}
               alt="sampleImage"
-              className="object-cover w-full h-full"
-              width={750}
-              height={750}
+              width={1000}
             />
           </div>
         </div>
         <button onClick={handleNextContent} className="hidden md:block">
           <p>Next</p>
         </button>
+      </div>
+      <div className="flex justify-start pl-2 lg:pl-32 xl:pl-72">
+        <div className="space-x-2">
+          {sliderData.map((_, index) => (
+            <button key={index} onClick={() => setActiveIndex(index)}>
+              <FontAwesomeIcon 
+                icon={faCircle}
+                className={activeIndex === index ? "border-[1px] size-2 rounded-full p-2 transition-all ease-in-out" : "text-black size-2 transition-all delay-100 ease-in-out"}
+              />
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   )

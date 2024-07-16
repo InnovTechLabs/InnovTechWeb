@@ -9,11 +9,14 @@ const config: Config = {
   theme: {
     colors : {
       purple : '#8B54FF',
+      lightpurple : '#9664FF',
+      darkpurple : '#5C28CA',
       yellow : "#FFD80D",
       black : "#010C2A",
       gray :  "#F2F0ED",
       cream : "#FFF3E6",
-      white : "#FFFFFF"
+      white : "#FFFFFF",
+      navyblue : "#00234B"
     },
     fontFamily : {
       manrope : ['Manrope', 'sans-serif'],
