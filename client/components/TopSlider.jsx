@@ -2,15 +2,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { faCircle, faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import Image from "next/image";
 import sampleImage from "@/public/assets/images/slider/slider-1.png";
 import StaticButton from "@/components/UI/StaticButton"
 import AnimateButton from "./UI/AnimateButton";
 import PlayButton from "@/components/UI/PlayButton"
+import styles from "@/public/styles/topslider.module.css"
 
-export default function TopSlider() {
+
+export default function TopSlider(props) {
   const [sliderData, setsliderData] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -43,9 +44,14 @@ export default function TopSlider() {
     setActiveIndex(activeIndex === 0 ? sliderData.length - 1 : activeIndex - 1);
   }
 
+  const handlePlayVideo = (id) => {
+    props.onVideoPlayClick(id);
+  }
+
+
   return (
     <div className="mx-auto px-10 my-28">
-      <div className="flex flex-none justify-between">
+      <div className="flex flex-none justify-between py-5">
         <button onClick={handlePreviousContent} className="hidden md:block">
           <FontAwesomeIcon
             icon={faAngleLeft}
@@ -65,15 +71,18 @@ export default function TopSlider() {
                   <p className="text-xl w-max">{data.category_description}</p>
                 </div>
                 <div className = {`flex flex-row space-x-5 items-center ${activeIndex === index ? "" : "hidden"}`}>
-                  <AnimateButton text={"Discover More"}/>
-                  <PlayButton/>
+                  <button>
+                    <AnimateButton text={"Discover More"}/>
+                  </button>
+                  <button onClick={() => handlePlayVideo(data.id)}>
+                    <PlayButton/>
+                  </button>
                   <p>Watch Video</p>
-
                 </div>
               </div>
             ))}
           </div>
-          <div className="">
+          <div className={`${styles['move-left-to-right']}`}>
             <Image
               src={sampleImage}
               alt="sampleImage"
@@ -88,7 +97,7 @@ export default function TopSlider() {
             />
         </button>
       </div>
-      <div className="flex justify-start pl-2 lg:pl-32 xl:pl-72">
+      <div className="flex justify-start pl-16 lg:pl-32 xl:pl-72">
         <div className="space-x-2">
           {sliderData.map((_, index) => (
             <button key={index} onClick={() => setActiveIndex(index)}>
