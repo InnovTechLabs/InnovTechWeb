@@ -2,9 +2,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle } from '@fortawesome/free-solid-svg-icons';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faCircle, faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import Image from "next/image";
 import sampleImage from "@/public/assets/images/slider/slider-1.png";
+import StaticButton from "@/components/UI/StaticButton"
+import AnimateButton from "./UI/AnimateButton";
+import PlayButton from "@/components/UI/PlayButton"
 
 export default function TopSlider() {
   const [sliderData, setsliderData] = useState([]);
@@ -40,19 +44,31 @@ export default function TopSlider() {
   }
 
   return (
-    <div className="mx-auto px-10 my-32">
+    <div className="mx-auto px-10 my-28">
       <div className="flex flex-none justify-between">
         <button onClick={handlePreviousContent} className="hidden md:block">
-          <p>Previous</p>
+          <FontAwesomeIcon
+            icon={faAngleLeft}
+            size="lg"
+            className="bg-white text-purple shadow-lg py-4 px-5 rounded-full transition-all delay-150 ease-in-out hover:bg-purple hover:text-white hover:[box-shadow:-3_-3_0_0_#120A21]"
+          />
         </button>
-        <div className="flex flex-col-reverse items-start lg:flex-row">
-          <div className="w-1/2 py-14 space-y-5">
-          <p className="text-2xl">Web Design Agency In Nepal</p>
+        <div className="flex flex-col-reverse items-start justify-between lg:flex-row lg:justify-between">
+          <div className="">          
             {sliderData.map((data, index) => (
-              <div key={index}>
-                <div className={`space-y-5 md:h-64 md:w-64 ${activeIndex === index ? "" : "hidden"}`}>
+              <div key={index} className="space-y-10">
+                <div className={`w-max ${activeIndex === index? "" : "hidden"}`}>
+                  <StaticButton text={`Best ${data.category_name} Agency In Nepal`}/>
+                </div>
+                <div className={`space-y-5 ${activeIndex === index ? "" : "hidden"}`}>
                   <p className="text-7xl w-min text-navyblue capitalize underline underline-offset-8 font-bold">{data.category_name}</p>
-                  <p className="text-xl">{data.category_description}</p>
+                  <p className="text-xl w-max">{data.category_description}</p>
+                </div>
+                <div className = {`flex flex-row space-x-5 items-center ${activeIndex === index ? "" : "hidden"}`}>
+                  <AnimateButton text={"Discover More"}/>
+                  <PlayButton/>
+                  <p>Watch Video</p>
+
                 </div>
               </div>
             ))}
@@ -61,12 +77,15 @@ export default function TopSlider() {
             <Image
               src={sampleImage}
               alt="sampleImage"
-              width={1000}
             />
           </div>
         </div>
         <button onClick={handleNextContent} className="hidden md:block">
-          <p>Next</p>
+          <FontAwesomeIcon
+              icon={faAngleRight}
+              size="lg"
+              className="bg-white text-purple shadow-lg py-4 px-5 rounded-full transition-all delay-150 ease-in-out hover:bg-purple hover:text-white hover:[box-shadow:-3_-3_0_0_#120A21]"
+            />
         </button>
       </div>
       <div className="flex justify-start pl-2 lg:pl-32 xl:pl-72">

@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import TopSlider from "@/components/TopSlider"
-import NumberCard from "@/components/NumberCard"
+import NumberCard from "@/components/UI/NumberCard"
 import { NumberCardInfo } from '@/static/NumberCardInfo'
 
 

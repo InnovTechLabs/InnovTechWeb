@@ -7,6 +7,7 @@ import MenuClose from "@/public/assets/images/icon/menuclose.png"
 import DropDown from "@/public/assets/images/icon/dropdown.svg"
 import { NavHeadings } from '@/static/NavHeadings'
 import { useState } from 'react'
+import AnimateButton from "@/components/UI/AnimateButton"
 
 export default function Navbar() {
     const [navToggle, setnavToggle] = useState(false)
@@ -58,9 +59,7 @@ export default function Navbar() {
                     </button>
                 </div>
                 <div>
-                    <button className='bg-purple px-10 py-3 [box-shadow:5_5px_0_0_] transition-all duration-700 ease-in-out hover:[box-shadow:10px_10px_0_0_#FFD80D] hover:m-3 hover:bg-black'>
-                        <span className='text-white'>Get Started </span>
-                    </button>
+                    <AnimateButton text={"Get Started"}/>
                 </div>
             </div>
             <div className='flex flex-row xl:hidden'>
