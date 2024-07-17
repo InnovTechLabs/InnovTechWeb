@@ -20,7 +20,7 @@ export default function Navbar() {
 
   return (
     <>
-    <div className='mx-auto font-manrope font-bold space-y-5'>
+    <div className='font-manrope font-bold'>
         <div className='flex flex-row justify-between items-center pt-3 mx-5 md:px-10'>
             <div className='cursor-pointer'>
                 <Image

@@ -16,7 +16,8 @@ const config: Config = {
       gray :  "#F2F0ED",
       cream : "#FFF3E6",
       white : "#FFFFFF",
-      navyblue : "#00234B"
+      navyblue : "#00234B",
+      lightpink : "#F7F3FF"
     },
     fontFamily : {
       manrope : ['Manrope', 'sans-serif'],

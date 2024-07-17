@@ -67,8 +67,8 @@ export default function TopSlider(props) {
                   <StaticButton text={`Best ${data.category_name} Agency In Nepal`}/>
                 </div>
                 <div className={`space-y-5 ${activeIndex === index ? "" : "hidden"}`}>
-                  <p className="text-7xl w-min text-navyblue capitalize underline underline-offset-8 font-bold">{data.category_name}</p>
-                  <p className="text-xl w-max">{data.category_description}</p>
+                  <h1 className="text-5xl w-min text-navyblue capitalize underline underline-offset-8 font-bold">{data.category_name}</h1>
+                  <h3 className="w-max">{data.category_description}</h3>
                 </div>
                 <div className = {`flex flex-row space-x-5 items-center ${activeIndex === index ? "" : "hidden"}`}>
                   <button>
