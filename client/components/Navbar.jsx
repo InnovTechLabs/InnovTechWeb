@@ -7,7 +7,7 @@ import MenuClose from "@/public/assets/images/icon/menuclose.png"
 import DropDown from "@/public/assets/images/icon/dropdown.svg"
 import { NavHeadings } from '@/static/NavHeadings'
 import { useState } from 'react'
-import AnimateButton from "@/components/UI/AnimateButton"
+import AnimateButton from "@/components/UI/Buttons/AnimateButton"
 
 export default function Navbar() {
     const [navToggle, setnavToggle] = useState(false)

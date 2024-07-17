@@ -21,7 +21,7 @@ export default function ServicesCard({ heading, description, image }) {
                     {description}
                 </div>
                 <div className='flex flex-row space-x-2'>
-                    <p>Read More</p>
+                    <p className='underline underline-offset-2 font-semibold'>Read More</p>
                     <Image
                     src={arrow}
                     alt='arrow'

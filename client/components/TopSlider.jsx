@@ -5,10 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle, faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import Image from "next/image";
 import sampleImage from "@/public/assets/images/slider/slider-1.png";
-import StaticButton from "@/components/UI/StaticButton"
-import AnimateButton from "./UI/AnimateButton";
-import PlayButton from "@/components/UI/PlayButton"
-import styles from "@/public/styles/topslider.module.css"
+import StaticButton from "@/components/UI/Buttons/StaticButton"
+import AnimateButtonSecondary from "./UI/Buttons/AnimateButtonSecondary";
+import PlayButton from "@/components/UI/Buttons/PlayButton"
+import styles from "@/public/styles/imageanimate.module.css"
 
 
 export default function TopSlider(props) {
@@ -72,7 +72,7 @@ export default function TopSlider(props) {
                 </div>
                 <div className = {`flex flex-row space-x-5 items-center ${activeIndex === index ? "" : "hidden"}`}>
                   <button>
-                    <AnimateButton text={"Discover More"}/>
+                    <AnimateButtonSecondary text={"Discover More"}/>
                   </button>
                   <button onClick={() => handlePlayVideo(data.id)}>
                     <PlayButton/>

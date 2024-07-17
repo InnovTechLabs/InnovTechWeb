@@ -1,0 +1,125 @@
+@keyframes moveTopToBottom {
+  0% {
+      transform: translateY(0%);
+  }
+  50% {
+      transform: translateY(10%);
+  }
+  100% {
+      transform: translateY(0%);
+  }
+}
+
+@keyframes moveBottomToTop {
+  0% {
+      transform: translateY(0%);
+  }
+  50% {
+      transform: translateY(-30%);
+  }
+  100% {
+      transform: translateY(0%);
+  }
+}
+
+@keyframes rotate-clockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-anticlockwise {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+      transform: rotate(0deg);
+  }
+}
+
+@keyframes moveLeftToRight {
+  0% {
+    transform: translateX(-0%);
+  }
+  50% {
+    transform: translateX(15%);
+  }
+  100% {
+    transform: translateX(-0%);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}
+
+@keyframes moveLeftToRightPulse{
+  0% {
+    transform: translateX(-10%);
+  }
+  25% {
+    transform: translateX(5%);
+  }
+  50% {
+    transform: translateX(15%);
+  }
+  75% {
+    transform: translateX(5%);
+  }
+  100% {
+    transform: translateX(-10%);
+  }
+}
+
+@keyframes moveRightToLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(-15%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.move-left-to-right {
+  animation: moveLeftToRight 20s linear infinite;
+}
+
+.move-left-to-right-pulse {
+  animation: 
+    moveLeftToRightPulse 10s ease-in-out infinite,
+    pulse 2s ease-in-out infinite;
+}
+
+.move-right-to-left {
+  animation: moveRightToLeft 20s linear infinite;
+}
+
+.move-top-to-bottom {
+  animation: moveTopToBottom 5s linear infinite;
+}
+
+.move-bottom-to-top {
+  animation: moveBottomToTop 3s linear infinite;
+}
+
+.rotate-clockwise{
+  animation: rotate-clockwise 15s linear infinite;
+}
+
+.rotate-anticlockwise{
+  animation: rotate-anticlockwise 15s linear infinite;
+}
