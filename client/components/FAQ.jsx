@@ -12,12 +12,15 @@ export default function FAQ() {
         <>
             {FAQs.map((faq, index) => (
             <div key={index} >
-                <div className='flex-col mx-10 sm:md-16 md:mx-32 lg:mx-64 py-5 justify-between'>
+                <div className='flex-col mx-10 sm:md-16 md:mx-32 lg:mx-64 py-5 mt-6 justify-between'>
                     <div className='bg-white p-4 space-y-5 [box-shadow:5_5_0_0#120A21] px-10'>
                         <div className='flex justify-between'>
                             <p className='font-bold font-manrope text-2xl'>{faq.question}</p>
                             <button onClick={() => handleToggle(faq.id)}>
-                                <CircleButton text={"+"}/>
+                            {toggleQuestion === faq.id?
+                                (<CircleButton text={"-"}/>) : 
+                                (<CircleButton text={"+"}/>)
+                            }
                             </button>
                         </div>
                         {toggleQuestion === faq.id?

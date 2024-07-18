@@ -14,6 +14,7 @@ import ServicesCard from "@/components/UI/Cards/ServicesCard"
 import Video from "@/components/Video"
 import ListingCard from "@/components/UI/Cards/LisitingCard"
 import CompaniesSlider from "@/components/CompaniesSlider"
+import SpeechBubble from "@/components/UI/SpeechBubble"
 
 import { NumberCardInfo } from '@/static/NumberCardInfo'
 import { ServiceCardInfo } from '@/static/ServiceCardInfo'
@@ -28,6 +29,13 @@ import stars from "@/public/assets/images/mark/mark-2.png"
 import discoball from "@/public/assets/images/mark/mark-4.png"
 import sun from "@/public/assets/images/mark/mark-6.png"
 import mikeperson from "@/public/assets/images/img-box/step.png"
+import innovTechlogo from "@/public/assets/images/img-box/testi-6.jpg"
+import palmtree from "@/public/assets/images/img-box/testi-1.png"
+import shareIcon from "@/public/assets/images/img-box/testi-2.png"
+import glowingStar from "@/public/assets/images/img-box/testi-3.png"
+import oppo from "@/public/assets/images/img-box/testi-4.jpg"
+import downwardThred from "@/public/assets/images/mark/mark-testi-5.png"
+import circularthread from "@/public/assets/images/mark/mark-testi.png"
 
 import imgstyle from "@/public/styles/imageanimate.module.css"
 
@@ -206,7 +214,7 @@ export default function Home() {
             <StaticButton text={"Asked Questions"}/>
             <div className='flex-col space-y-5'>
               <div>
-                <span className='text-4xl font-manrope font-semibold'>Have Any Questions In Mind?</span>
+                <span className='text-4xl font-manrope font-semibold'>Have Questions In Mind?</span>
               </div>
               <div>
                 <span className='text-4xl font-manrope font-semibold'>Frequently Asked Questions!</span>
@@ -228,11 +236,85 @@ export default function Home() {
                   ))}
               </div>
           </div>
-          </div>
-          <FAQ/>
-        <div>
-
         </div>
+
+        <FAQ/>
+        <div className='py-10'>
+          <div className='flex flex-col xl:flex-row items-center bg-black mx-10 [box-shadow:10_10_0_0#FFD80D]'>
+            <div className='relative left-0 md:bottom-52 md:left-52 flex-col md:mt-64 xl:mb-96 xl:mt-96 xl:flex w-full'>
+
+              <div className={`absolute mx-auto left-[-50] z-0 ${imgstyle['pulse']}`}>
+                <Image
+                  src={circularthread}
+                  alt='circleThread'
+                  className='w-fit'
+                />
+              </div>
+
+              <div className='absolute z-10'>
+                <Image
+                  src={innovTechlogo}
+                  alt='innovtech'
+                  className='rounded-2xl mt-14 w-fit'
+                />
+              </div>
+              
+              
+              <div className={`absolute top-0 bottom-0 left-[-50] right-[600] mx-auto mt-10 z-20 hidden md:block ${imgstyle['move-left-to-right']}`}>
+                <Image
+                  src={palmtree}
+                  alt='palmtree'
+                  width={80}
+                  className='w-fit'
+                />
+              </div>
+
+              <div className={`absolute top-0 bottom-0 left-[-50] right-[600] mx-auto mt-80 z-30 hidden md:block ${imgstyle['move-left-to-right']}`}>
+                <Image
+                  src={shareIcon}
+                  alt='shareIcon'
+                  className='w-fit'
+                />
+              </div>
+
+              <div className={`absolute mx-auto ml-64 mt-20 z-30 hidden sm:block ${imgstyle['move-top-to-bottom']}`}>
+                <Image
+                  src={glowingStar}
+                  alt='glowingStart'
+                  className='w-fit'
+                />
+              </div>
+
+              <div className={`absolute mx-auto left-[70] mt-80 z-40 hidden sm:block  `}>
+                <Image
+                  src={downwardThred}
+                  alt='downwardThred'
+                  className='w-fit'
+                />
+              </div>
+
+              <div className={`absolute mx-auto ml-64 left-[-50] mt-64 z-40 hidden sm:block`}>
+                <Image
+                  src={oppo}
+                  alt='oppo'
+                  className='w-fit rounded-full'
+                />
+              </div>
+              
+            </div>
+            <div className='flex-col pt-[400] xl:py-5 '>
+              <div className='flex flex-col md:flex-row items-center justify-center'>
+                <SpeechBubble />
+                <SpeechBubble />
+              </div>
+              <div className='flex-col items-center justify-center'>
+                <SpeechBubble />
+              </div>
+            </div>
+          </div>
+        </div>
+
+                  
         <NewsLetter/>
         
 
