@@ -94,6 +94,23 @@
   }
 }
 
+@keyframes moveTriangle {
+  0% {
+    transform: translateX(200%);
+  }
+  25% {
+    transform: translateY(250%);
+  }
+  50% {
+    transform: translateY(10%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+  
+  
+}
+
 .move-left-to-right {
   animation: moveLeftToRight 20s linear infinite;
 }
@@ -119,6 +136,10 @@
 .pulse {
   animation: 
     pulse 2s ease-in-out infinite;
+}
+
+.move-triangle{
+  animation : moveTriangle 2s linear infinite
 }
 
 

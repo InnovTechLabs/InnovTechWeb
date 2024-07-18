@@ -10,11 +10,30 @@ import StaticButtonSecondary from '@/components/UI/Buttons/StaticButtonSecondary
 import AnimateButtonSecondary from './UI/Buttons/AnimateButtonSecondary'
 import imageStyle from "@/public/styles/imageanimate.module.css"
 import AnimateButton from './UI/Buttons/AnimateButton'
+import whitestar from "../public/assets/images/mark/mark-news-2.png"
+import whitetraingle from "../public/assets/images/mark/mark-news-3.png"
+import imgStyle from "../public/styles/imageanimate.module.css"
 
 export default function NewsLetter() {
   return (
     <>
-    <div className='flex flex-col-reverse lg:flex-row py-16 space-y-14 items-center justify-around bg-purple [box-shadow:5_5_0_0] sm:mx-10 mx-2'>
+    <div className='flex flex-col-reverse lg:flex-row py-16 space-y-14 items-center justify-around bg-purple [box-shadow:5_5_0_0] sm:mx-10 mx-2 '>
+        <div className='flex-col space-y-52 w-10'>
+            <div className={`hidden lg:block ${imgStyle['rotate-anticlockwise']}`}>
+                <Image
+                src={whitestar}
+                alt='whitestart'
+                />
+            </div>
+            <div className={`hidden lg:block ${imgStyle['move-triangle']}`}>
+                <Image
+                    src={whitetraingle}
+                    alt='whitetriangle'
+
+                />
+            </div>
+        </div>
+
         <div className='flex flex-col px-4 space-y-12'>
             <div>
                 <StaticButtonSecondary text={"Our NewsLetter"}/>
@@ -33,6 +52,7 @@ export default function NewsLetter() {
             </div>
             
         </div>
+
         <div className='flex flex-col justify-center items-center'>
             <div className={` absolute ${imageStyle['move-left-to-right-pulse']}`}>
                 <Image
@@ -48,6 +68,23 @@ export default function NewsLetter() {
                 />  
             </div>
         </div>
+
+        <div className='flex-col space-y-52 w-10'>
+            <div className={`hidden lg:block ${imgStyle['move-triangle']}`}>
+                <Image
+                    src={whitetraingle}
+                    alt='whitetriangle'
+
+                />
+            </div>
+            <div className={`hidden lg:block ${imgStyle['rotate-anticlockwise']}`}>
+                <Image
+                src={whitestar}
+                alt='whitestart'
+                />
+            </div>
+        </div>
+
     </div>
     </>
   )

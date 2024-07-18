@@ -17,6 +17,9 @@ import CompaniesSlider from "@/components/CompaniesSlider"
 
 import { NumberCardInfo } from '@/static/NumberCardInfo'
 import { ServiceCardInfo } from '@/static/ServiceCardInfo'
+import { technologies } from '@/static/Technologies'
+import FAQ from "@/components/FAQ"
+
 
 import About1 from "@/public/assets/images/img-box/about-1.png"
 import star from "@/public/assets/images/mark/mark-5.png"
@@ -83,7 +86,7 @@ export default function Home() {
         </div>
 
         <div className='flex flex-col md:flex-row justify-around items-center px-12 py-12'>
-          <div className={imgstyle['pulse']}>
+          <div className={`hidden md:block ${imgstyle['pulse']}`}>
             <Image
               src={stars}
               alt='stars'
@@ -110,13 +113,13 @@ export default function Home() {
           </div>
           </div>
           <div className='flex-col space-y-52'>
-            <div className={`${imgstyle['rotate-clockwise']}`}>
+            <div className={`hidden md:block ${imgstyle['rotate-clockwise']}`}>
               <Image
                 src={star2}
                 alt='star2'
               />
             </div>
-            <div className={`${imgstyle['pulse']}`}>
+            <div className={`hidden md:block ${imgstyle['pulse']}`}>
               <Image
                   src={discoball}
                   alt='discoball'
@@ -169,8 +172,8 @@ export default function Home() {
           <div>
             
           </div>
-
         </div>
+
 
         <div className='flex flex-col md:flex-row justify-around py-5'>
           <div className='flex-col space-y-5 mx-10'>
@@ -195,6 +198,40 @@ export default function Home() {
 
         <div className='mx-10 py-5'>
           <CompaniesSlider/>
+        </div>
+
+        <div className='flex flex-col lg:flex-row lg:justify-around lg:items-center py-16 mx-10 space-y-10'>
+          
+          <div className='space-y-5'>
+            <StaticButton text={"Asked Questions"}/>
+            <div className='flex-col space-y-5'>
+              <div>
+                <span className='text-4xl font-manrope font-semibold'>Have Any Questions In Mind?</span>
+              </div>
+              <div>
+                <span className='text-4xl font-manrope font-semibold'>Frequently Asked Questions!</span>
+              </div>
+            </div>
+          </div>
+
+          <div className='space-y-3'>
+              <p className='font-semibold font-manrope text-xl'>Tools & Technogies That We Use</p>
+              <div className='flex flex-row items-start justify-start'>
+                  {technologies.map((t, index) => (
+                    <div key={index} className='px-3 md:px-6 cursor-pointer'>
+                      <Image
+                        src={t}
+                        alt='t'
+                        className='absolute w-10 md:w-20'
+                      />
+                    </div>
+                  ))}
+              </div>
+          </div>
+          </div>
+          <FAQ/>
+        <div>
+
         </div>
         <NewsLetter/>
         
