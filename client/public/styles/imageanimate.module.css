@@ -116,6 +116,12 @@
   animation: moveBottomToTop 3s linear infinite;
 }
 
+.pulse {
+  animation: 
+    pulse 2s ease-in-out infinite;
+}
+
+
 .rotate-clockwise{
   animation: rotate-clockwise 15s linear infinite;
 }

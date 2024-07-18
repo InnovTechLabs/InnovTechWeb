@@ -1,0 +1,26 @@
+.scroll {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .mscroll {
+    overflow: hidden;
+    display: flex;
+    width: fit-content;
+  }
+  
+  .scroll-content {
+    display: flex;
+    animation: scrollText 12s infinite linear;
+  }
+  
+  @keyframes scrollText {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  
