@@ -17,7 +17,7 @@ import imgStyle from "../public/styles/imageanimate.module.css"
 export default function NewsLetter() {
   return (
     <>
-    <div className='flex flex-col-reverse lg:flex-row py-16 space-y-14 items-center justify-around bg-purple [box-shadow:5_5_0_0] sm:mx-10 mx-2 '>
+    <div className='flex flex-col-reverse lg:flex-row py-16 space-y-14 items-center justify-around bg-purple [box-shadow:10_10_0_0] sm:mx-10 mx-2 '>
         <div className='flex-col space-y-52 w-10'>
             <div className={`hidden lg:block ${imgStyle['rotate-anticlockwise']}`}>
                 <Image
@@ -54,17 +54,18 @@ export default function NewsLetter() {
         </div>
 
         <div className='flex flex-col justify-center items-center'>
-            <div className={` absolute ${imageStyle['move-left-to-right-pulse']}`}>
+            <div className={`w-fit absolute ${imageStyle['move-left-to-right-pulse']}`}>
                 <Image
                 src={ring}
                 alt='ring'
-                width={500}
+                className=' w-[300] md:w-[500]'
                 />
             </div>
-            <div className={`${imageStyle['move-left-to-right']}`}>
+            <div className={` ${imageStyle['move-left-to-right']}`}>
                 <Image
                     src={newsLetter}
                     alt='newsletter'
+                    className=' w-[300] md:w-[500]'
                 />  
             </div>
         </div>

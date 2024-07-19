@@ -15,6 +15,7 @@ import Video from "@/components/Video"
 import ListingCard from "@/components/UI/Cards/LisitingCard"
 import CompaniesSlider from "@/components/CompaniesSlider"
 import SpeechBubble from "@/components/UI/SpeechBubble"
+import BottomSlider from "@/components/BottomSlider"
 
 import { NumberCardInfo } from '@/static/NumberCardInfo'
 import { ServiceCardInfo } from '@/static/ServiceCardInfo'
@@ -172,14 +173,14 @@ export default function Home() {
           </div>   
         </div>
 
-        <div className='flex flex-row justify-around py-10'>
-          <div className='flex-col items-start space-y-5'>
+        <div className='flex flex-col justify-around py-10 space-y-10'>
+          <div className='flex-col items-start space-y-5 px-10 md:px-52'>
             <StaticButton text={"Latest Works"}/>
-            <p className='text-2xl font-semibold'>We&apos;ve Done Global Projects Take a Look</p>
+            <p className='text-4xl font-semibold'>We&apos;ve Done Global Projects Take a Look</p>
           </div>
           <div>
-            
           </div>
+            <BottomSlider/>
         </div>
 
 
@@ -239,6 +240,7 @@ export default function Home() {
         </div>
 
         <FAQ/>
+
         <div className='py-10'>
           <div className='flex flex-col xl:flex-row items-center bg-black mx-10 [box-shadow:10_10_0_0#FFD80D]'>
             <div className='relative left-0 md:bottom-52 md:left-52 flex-col md:mt-64 xl:mb-96 xl:mt-96 xl:flex w-full'>

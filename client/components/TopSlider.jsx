@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle, faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import Image from "next/image";
 import sampleImage from "@/public/assets/images/slider/slider-1.png";
+import worldmap from "@/public/assets/images/slider/mark-slider-2.png"
 import StaticButton from "@/components/UI/Buttons/StaticButton"
 import AnimateButtonSecondary from "./UI/Buttons/AnimateButtonSecondary";
 import PlayButton from "@/components/UI/Buttons/PlayButton"
@@ -60,10 +61,10 @@ export default function TopSlider(props) {
           />
         </button>
         <div className="flex flex-col-reverse items-start justify-between lg:flex-row lg:justify-between">
-          <div className="">          
+          <div >          
             {sliderData.map((data, index) => (
               <div key={index} className="space-y-10">
-                <div className={`w-max ${activeIndex === index? "" : "hidden"}`}>
+                <div className={`w-[300] sm:w-[500] ${activeIndex === index? "" : "hidden"}`}>
                   <StaticButton text={`Best ${data.category_name} Agency In Nepal`}/>
                 </div>
                 <div className={`space-y-5 ${activeIndex === index ? "" : "hidden"}`}>
@@ -82,11 +83,21 @@ export default function TopSlider(props) {
               </div>
             ))}
           </div>
-          <div className={`${styles['move-left-to-right']}`}>
-            <Image
-              src={sampleImage}
-              alt="sampleImage"
-            />
+          <div className="relative left-0 bottom-0 top-0 right-0">
+            <div className="absolute z-10 p-4">
+              <Image
+                src={sampleImage}
+                alt="sampleImage"
+                className="w-[250] md:w-[500]"
+              />
+            </div>
+            <div className="mx-auto z-0 ">
+              <Image
+                src={worldmap}
+                alt="worldmap"
+                className="w-[250] md:w-[550]"
+              />
+            </div>
           </div>
         </div>
         <button onClick={handleNextContent} className="hidden md:block">
