@@ -16,6 +16,7 @@ import ListingCard from "@/components/UI/Cards/LisitingCard"
 import CompaniesSlider from "@/components/CompaniesSlider"
 import SpeechBubble from "@/components/UI/SpeechBubble"
 import BottomSlider from "@/components/BottomSlider"
+import BlogSlider from "@/components/UI/BlogSlider"
 
 import { NumberCardInfo } from '@/static/NumberCardInfo'
 import { ServiceCardInfo } from '@/static/ServiceCardInfo'
@@ -314,6 +315,17 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className='flex-col items-center justify-center '>
+          <div className='flex-col'>
+            <StaticButton text={"News & Blog"}/>
+            <p className='text-3xl font-manrope font-extrabold'>Get Every Single Updated Articles</p>
+          </div>
+        </div>
+
+        <div className='mx-10'>
+          <BlogSlider/>
         </div>
 
                   
