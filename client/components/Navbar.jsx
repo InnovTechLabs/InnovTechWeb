@@ -8,6 +8,7 @@ import DropDown from "@/public/assets/images/icon/dropdown.svg"
 import { NavHeadings } from '@/static/NavHeadings'
 import { useState } from 'react'
 import AnimateButton from "@/components/UI/Buttons/AnimateButton"
+import Link from 'next/link'
 
 export default function Navbar() {
     const [navToggle, setnavToggle] = useState(false)
@@ -38,12 +39,12 @@ export default function Navbar() {
                             {heading.text}{<Image src={DropDown} alt = "DropDown" width={20} height={20}/>}
                             <div className="dropdown-menu absolute hidden transition-all delay-900 ease-in-out h-2 top-8 py-2 w-72 group-hover:grid">
                                 {heading.subpath.map((subheadings, subIndex) => (
-                                    <div className='cursor-pointer bg-white text-black border-b-gray shadow-lg shadow-purple px-5 py-5 border-b-[1px] transition-all delay-200 ease-in-out hover:pl-10 hover:text-purple' key={subIndex}>{subheadings.subText}</div>
+                                    <Link href={subheadings.subsubPath}><div className='cursor-pointer bg-white text-black border-b-gray shadow-lg shadow-purple px-5 py-5 border-b-[1px] transition-all delay-200 ease-in-out hover:pl-10 hover:text-purple' key={subIndex}>{subheadings.subText}</div></Link>
                                 ))}
                             </div>
                         </div>
                     ) : (
-                        <div key={index} className='cursor-pointer px-4 py-1 transition-all duration-300 ease-in-out hover:bg-purple hover:text-white hover:rounded-md hover:[box-shadow:3px_4px_0_0_#010C2A]'>{heading.text}</div>
+                        <Link href={heading.path}><div key={index} className='cursor-pointer px-4 py-1 transition-all duration-300 ease-in-out hover:bg-purple hover:text-white hover:rounded-md hover:[box-shadow:3px_4px_0_0_#010C2A]'>{heading.text}</div></Link>
                     )
                 )}
             </div>
