@@ -67,9 +67,9 @@ export default function page() {
             </div>
           </div>
         </div>
-        <div className='relative py-64 md:py-48'>
+        <div className='relative py-80 md:py-48'>
           <Map />
-          <div className='bg-white absolute inset-0 flex-col justify-center items-center p-24 mt-80 mx-10 md:mx-32 text-center space-y-10 mb-[-100] outline outline-1 [box-shadow:5_5_0_0]'>
+          <div className='bg-white absolute inset-0 flex-col justify-center items-center p-24 mt-[500] mx-10 md:mx-32 text-center space-y-10 mb-[-200] outline outline-1 [box-shadow:5_5_0_0]'>
             <StaticButton text={"Get In Touch"} />
             <p>Have Any Question On Mind! Send Us Message</p>
             <div className='flex flex-col justify-center space-y-5 md:space-y-0 md:flex-row   hover:text-white space-x-0 md:space-x-10'>
@@ -83,7 +83,7 @@ export default function page() {
             </div>
           </div>
         </div>
-        <div className='py-32'>
+        <div className='pt-64'>
           <NewsLetter />
         </div>
         <Footer />
