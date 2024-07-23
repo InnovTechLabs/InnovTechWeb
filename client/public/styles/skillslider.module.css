@@ -1,0 +1,13 @@
+.slidercontainer {
+    width: 100%;
+    background-color: #97A5BB;
+}
+
+.slider {
+    height: 5px;
+    background-color: #5C28CA;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    transition: width 0.5s ease-in-out;
+}

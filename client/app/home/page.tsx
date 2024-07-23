@@ -318,13 +318,13 @@ export default function Home() {
         </div>
 
         <div className='flex-col items-center justify-center '>
-          <div className='flex-col'>
+          <div className='flex-col text-center space-y-5'>
             <StaticButton text={"News & Blog"}/>
             <p className='text-3xl font-manrope font-extrabold'>Get Every Single Updated Articles</p>
           </div>
         </div>
 
-        <div className='mx-10'>
+        <div className='mx-10 my-10'>
           <BlogSlider/>
         </div>
 
