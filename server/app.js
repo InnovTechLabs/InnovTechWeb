@@ -9,11 +9,13 @@ const PORT = process.env.BACKEND_PORT || 5000;
 const user_route = require("./routes/user_route")
 const category_route = require("./routes/category_route")
 const service_route = require("./routes/service_route")
+const contact_route = require("./routes/contact_route")
 
 //tables to be synchorized
 const CategoryTable = require('./models/category_table');
 const ServiceTable = require('./models/service_table');
 const UserTable = require('./models/user_table');
+const ContactTable = require('./models/contact_table')
 
 //db connection
 const { db_connection, sequelize } = require('./config/db');
@@ -26,6 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", user_route)
 app.use("/", category_route)
 app.use("/", service_route)
+app.use("/", contact_route)
 
 
 //start server
