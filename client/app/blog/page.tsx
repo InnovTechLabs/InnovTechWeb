@@ -12,6 +12,12 @@ import {faCalendar} from "@fortawesome/free-regular-svg-icons"
 import go from "@/public/assets/images/icon/go.svg"
 import axios from 'axios'
 import postImage from "@/public/assets/images/blog/blog-2.jpg"
+import AnimateButton from '@/components/UI/Buttons/AnimateButton'
+import PopularTag from "@/components/UI/Cards/PopluarTag"
+import marketingProjectImage from "@/public/assets/images/img-box/about-3.png"
+import NewsLetter from '@/components/NewsLetter'
+import Footer from '@/components/Footer'
+
 
 export default function Blog() {
     const [category, setCategory] = useState([])
@@ -53,7 +59,7 @@ export default function Blog() {
                 <BlogPostCard date={"September 25, 2022"} title={"How Partytown Eliminates Website Bloat From Party"} content={"Drive more leads, sales, and revenue for business digital marketing"} image={blogImage}/>
                 <BlogPostCard date={"September 25, 2022"} title={"How Partytown Eliminates Website Bloat From Party"} content={"Drive more leads, sales, and revenue for business digital marketing"} image={blogImage}/>
             </div>
-            <div className='flex flex-col'>
+            <div className='flex flex-col py-10 lg:py-0 space-y-10'>
                 <div className='outline outline-1 p-10 space-y-5'>
                     <p className='font-bold text-xl'>Search</p>
                     <div>
@@ -163,8 +169,46 @@ export default function Blog() {
                         </div>
                     </div>
                 </div>
+                <div className='flex flex-col justify-center items-center p-14 space-y-10 bg-cream'>
+                    <p>Lets Start Making New Marketing Project</p>
+                    <div>
+                        <AnimateButton text={"Get Started"}/>
+                    </div>
+                    <div>
+                        <Image
+                            src={marketingProjectImage}
+                            alt='marketingProjectImage'
+                        />
+                    </div>
+                </div>
+
+
+                <div className='outline outline-1 p-4'>
+                    <p>Popular Tag</p>
+                    <div className='p-5 space-y-5 '>
+                        <div className='flex flex-row justify-around'>    
+                            <PopularTag text = {"Name"}/>
+                            <PopularTag text = {"Name"}/>
+                            <PopularTag text = {"Name"}/>
+                        </div>
+                        <div className='flex flex-row justify-around'>    
+                            <PopularTag text = {"Name"}/>
+                            <PopularTag text = {"Name"}/>
+                            <PopularTag text = {"Name"}/>
+                        </div>
+                        <div className='flex flex-row justify-around'>    
+                            <PopularTag text = {"Name"}/>
+                            <PopularTag text = {"Name"}/>
+                            <PopularTag text = {"Name"}/>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <div className='py-10'>
+            <NewsLetter/>
+        </div>
+        <Footer/>
     </div>
     </>
   )
