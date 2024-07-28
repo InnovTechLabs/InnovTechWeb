@@ -1,8 +1,8 @@
 const {DataTypes} = require("sequelize")
 const {sequelize} = require("../config/db")
 
-const TeamTable = sequelize.define(
-    'team_table',
+const MemberTable = sequelize.define(
+    'member_table',
     {
         member_name  : {
             type : DataTypes.STRING,
@@ -11,6 +11,11 @@ const TeamTable = sequelize.define(
         },
         member_position  : {
             type : DataTypes.STRING,
+            allowNull : false,
+            unique : false
+        },
+        member_about : {
+            type : DataTypes.TEXT,
             allowNull : false,
             unique : false
         },
@@ -50,4 +55,4 @@ const TeamTable = sequelize.define(
     }
 )
 
-module.exports = TeamTable
+module.exports = MemberTable

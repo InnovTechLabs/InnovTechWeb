@@ -1,9 +1,9 @@
-const TeamTable = require("../models/team_table")
+const MemberTable = require("../models/member_table")
 module.exports = {
     GET : async (req, res) => {
         try {
-            const team = await TeamTable.findAll()
-            res.send(team)
+            const member = await MemberTable.findAll()
+            res.send(member)
 
         } catch (error) {
             console.log(error);
@@ -20,7 +20,7 @@ module.exports = {
             member_linkedin,
             member_twitter} = req.body
         try {
-            const team = await TeamTable.build({
+            const member = await MemberTable.build({
                 member_name : member_name,
                 member_position : member_position,
                 member_role : member_role,
@@ -31,7 +31,7 @@ module.exports = {
                 member_twitter : member_twitter
             })
 
-            await team.save()
+            await member.save()
 
         } catch (error) {
             console.log(error);
@@ -49,7 +49,7 @@ module.exports = {
             member_linkedin,
             member_twitter} = req.body
             try {
-                const member = await TeamTable.findByPk(member_id)
+                const member = await MemberTable.findByPk(member_id)
 
                 if(!member){
                     res.status(404).json({"message" : "Member Not Found"})
@@ -84,7 +84,7 @@ module.exports = {
             member_twitter} = req.body
 
         try {
-            const member = await TeamTable.findOne({
+            const member = await MemberTable.findOne({
                 id : member_id,
                 member_name : member_name,
                 member_position : member_position,
