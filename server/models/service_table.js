@@ -10,7 +10,8 @@ const ServiceTable = sequelize.define(
             references : {
                 model : CategoryTable,
                 key : 'id'
-            }
+            },
+            allowNull : false
         },
         service_name : {
             type : DataTypes.STRING,

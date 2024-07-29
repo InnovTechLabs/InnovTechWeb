@@ -11,6 +11,7 @@ const category_route = require("./routes/category_route")
 const service_route = require("./routes/service_route")
 const contact_route = require("./routes/contact_route")
 const member_route = require("./routes/member_route")
+const comment_route = require('./routes/comment_route')
 
 //tables to be synchorized
 const CategoryTable = require('./models/category_table');
@@ -19,6 +20,7 @@ const UserTable = require('./models/user_table');
 const ContactTable = require('./models/contact_table')
 const MemberTable = require('./models/member_table')
 const BlogTable = require('./models/blog_table')
+const CommentTable = require('./models/comment_table')
 
 //db connection
 const { db_connection, sequelize } = require('./config/db');
@@ -34,6 +36,7 @@ app.use("/", category_route)
 app.use("/", service_route)
 app.use("/", contact_route)
 app.use("/", member_route)
+app.use("/", comment_route)
 
 
 //start server

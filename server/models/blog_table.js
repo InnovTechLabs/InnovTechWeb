@@ -5,16 +5,6 @@ const MemberTable = require("./member_table")
 const BlogTable = sequelize.define(
     'blog_table',
     {
-        title : {
-            type : DataTypes.STRING,
-            allowNull : false,
-            unique : false
-        },
-        content : {
-            type : DataTypes.TEXT,
-            allowNull : false,
-            unique : false
-        },
         member_id : {
             type : DataTypes.INTEGER,
             references : {
@@ -22,6 +12,21 @@ const BlogTable = sequelize.define(
                 key : 'id'
             }
         }, 
+        blog_title : {
+            type : DataTypes.STRING,
+            allowNull : false,
+            unique : true
+        },
+        blog_content : {
+            type : DataTypes.TEXT,
+            allowNull : false,
+            unique : false
+        },
+        blog_image : {
+            type : DataTypes.STRING,
+            allowNull : false,
+            unique : false
+        }
     },
     {
         freezeTableName : true,
