@@ -17,7 +17,7 @@ module.exports = {
     },
 
 
-    GETByMemberId : async(req, res) => {
+    GETBlogByMemberId : async(req, res) => {
         const {member_id} = req.params
         try {
             const blogs = await BlogTable.findAll({
