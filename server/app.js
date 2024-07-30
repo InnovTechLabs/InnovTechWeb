@@ -12,6 +12,7 @@ const service_route = require("./routes/service_route")
 const contact_route = require("./routes/contact_route")
 const member_route = require("./routes/member_route")
 const comment_route = require('./routes/comment_route')
+const blog_route = require("./routes/blog_route")
 
 //tables to be synchorized
 const CategoryTable = require('./models/category_table');
@@ -37,6 +38,7 @@ app.use("/", service_route)
 app.use("/", contact_route)
 app.use("/", member_route)
 app.use("/", comment_route)
+app.use("/", blog_route)
 
 
 //start server
