@@ -28,6 +28,7 @@ import RecentPost from "@/components/RecentPost"
 import CommentCard from "@/components/UI/Cards/CommentCard"
 import commentImage from "@/public/assets/images/blog/avatar-1.jpg"
 import ReplyBox from "@/components/ReplyBox"
+import generateSlug from '@/utils/slug'
 
 export default function BlogDetail({params} : {params : {blogname : String}}) {
   const [category, setCategory] = useState([])
@@ -42,7 +43,9 @@ export default function BlogDetail({params} : {params : {blogname : String}}) {
   }
 
   const fetchBlogData = async() => {
-    const response = await axios.get("http://localhost:5000/blog/all-blogs").then((result) => {
+    const slug =generateSlug(params.blogname)
+    const response = await axios.get(`http://localhost:5000/blog/${slug}`).then((result) => {
+      console.log(result.data);
       setBlogs(result.data)
     }).catch((err) => {
       console.log(err);

@@ -4,6 +4,7 @@ const route = express.Router()
 
 route.get("/blog/all-blogs", blog_controller.GETAllBlogs)
 route.get("/blog/all-blogs/:member_id", blog_controller.GETBlogByMemberId)
+route.get("/blog/:blog_title", blog_controller.GETBlogByTitle)
 route.post("/blog/add-blog/:member_id", blog_controller.POSTBlog)
 route.put("/blog/update-blog/:blog_id", blog_controller.PUTBlog)
 route.delete("/blog/delete-blog/:blog_id", blog_controller.DELETEBlog)

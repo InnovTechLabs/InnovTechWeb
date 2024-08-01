@@ -37,6 +37,28 @@ module.exports = {
         }
     },
 
+    GETBlogByTitle : async(req,res) => {
+        const {blog_title} = req.params
+        const decodedName = blog_title.replace(/-/g, ' ')
+        try {
+            const blog = await BlogTable.findOne({
+                where : { 
+                    blog_title : decodedName
+                }
+            })
+
+            if(blog){
+                res.send(blog)
+            }
+            else{
+                res.status(404).json({"message" : "Blog Not Found"})
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+    },
+
     POSTBlog : async(req, res) => {
         const {member_id} = req.params
         const  {blog_title, blog_content, blog_image } = req.body
