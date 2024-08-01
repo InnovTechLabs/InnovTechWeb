@@ -17,10 +17,13 @@ import PopularTag from "@/components/UI/Cards/PopluarTag"
 import marketingProjectImage from "@/public/assets/images/img-box/about-3.png"
 import NewsLetter from '@/components/NewsLetter'
 import Footer from '@/components/Footer'
+import RecentPost from '@/components/RecentPost'
+import Link from 'next/link'
 
 
 export default function Blog() {
     const [category, setCategory] = useState([])
+    const [blogs, setBlogs] = useState([]);
 
     const fetchCategoryData = async() => {
         const response = await axios.get("http://localhost:5000/category/all-categories").then((result) => {
@@ -30,8 +33,18 @@ export default function Blog() {
         });
     }
 
+    const fetchBlogData = async() => {
+        const response = await axios.get("http://localhost:5000/blog/all-blogs").then((result) => {
+            setBlogs(result.data)
+        }).catch((err) => {
+            console.log(err);
+        });
+
+    }
+
     useEffect(() => {
-        fetchCategoryData()
+        fetchCategoryData();
+        fetchBlogData()
     },[])
 
   return (
@@ -51,13 +64,14 @@ export default function Blog() {
 
     <div className='bg-white p-10 '>
         <div className='flex flex-col lg:flex-row space-x-14'>
-            <div className='flex-col space-y-10'>
-                <BlogPostCard date={"September 25, 2022"} title={"How Partytown Eliminates Website Bloat From Party"} content={"Drive more leads, sales, and revenue for business digital marketing"} image={blogImage}/>
-                <BlogPostCard date={"September 25, 2022"} title={"How Partytown Eliminates Website Bloat From Party"} content={"Drive more leads, sales, and revenue for business digital marketing"} image={blogImage}/>
-                <BlogPostCard date={"September 25, 2022"} title={"How Partytown Eliminates Website Bloat From Party"} content={"Drive more leads, sales, and revenue for business digital marketing"} image={blogImage}/>
-                <BlogPostCard date={"September 25, 2022"} title={"How Partytown Eliminates Website Bloat From Party"} content={"Drive more leads, sales, and revenue for business digital marketing"} image={blogImage}/>
-                <BlogPostCard date={"September 25, 2022"} title={"How Partytown Eliminates Website Bloat From Party"} content={"Drive more leads, sales, and revenue for business digital marketing"} image={blogImage}/>
-                <BlogPostCard date={"September 25, 2022"} title={"How Partytown Eliminates Website Bloat From Party"} content={"Drive more leads, sales, and revenue for business digital marketing"} image={blogImage}/>
+            <div className='flex-col space-y-10 w-fit lg:w-3/4'>
+                {blogs.slice(0,4).map((blog) => (
+                    <div key={blog.id} className='cursor-pointer'>
+                        <Link href = {`/blog/${blog.blog_title}`}>
+                            <BlogPostCard date={blog.createdAt} title={blog.blog_title} content={blog.blog_content} image={blog.blog_image}/>
+                        </Link>
+                        </div>
+                ))}
             </div>
             <div className='flex flex-col py-10 lg:py-0 space-y-10'>
                 <div className='outline outline-1 p-10 space-y-5'>
@@ -93,81 +107,7 @@ export default function Blog() {
                 <div className='outline outline-1 p-4'>
                     <p>Recent Post</p>
 
-                    <div className='flex flex-row space-x-14 p-4 group '>
-                        <div className='relative overflow-hidden transition-all duration-500 [box-shadow:5_5_0_0#120A21] group-hover:[box-shadow:5_5_0_0#8B54FF] h-fit'>
-                            <div className='transition-transform duration-1000 ease-in-out group-hover:scale-125'>
-                                <Image
-                                    src={postImage}
-                                    alt='postImage'
-                                    width={100}
-                                />
-                            </div>
-                        </div>
-                        <div className='flex-col'>
-                            <div className='flex text-purple items-center space-x-2'>
-                                <FontAwesomeIcon icon={faCalendar}/> 
-                                <p>September 25, 2022</p>  
-                            </div>
-                            <p className='group-hover:text-lightpurple font-bold'>Fluid Sizing Instead Of Media Queries</p>
-                        </div>
-                    </div>
-
-                    <div className='flex flex-row space-x-14 p-4 group '>
-                        <div className='relative overflow-hidden transition-all duration-500 [box-shadow:5_5_0_0#120A21] group-hover:[box-shadow:5_5_0_0#8B54FF] h-fit'>
-                            <div className='transition-transform duration-1000 ease-in-out group-hover:scale-125'>
-                                <Image
-                                    src={postImage}
-                                    alt='postImage'
-                                    width={100}
-                                />
-                            </div>
-                        </div>
-                        <div className='flex-col'>
-                            <div className='flex text-purple items-center space-x-2'>
-                                <FontAwesomeIcon icon={faCalendar}/> 
-                                <p>September 25, 2022</p>  
-                            </div>
-                            <p className='group-hover:text-lightpurple font-bold'>Fluid Sizing Instead Of Media Queries</p>
-                        </div>
-                    </div>
-
-                    <div className='flex flex-row space-x-14 p-4 group '>
-                        <div className='relative overflow-hidden transition-all duration-500 [box-shadow:5_5_0_0#120A21] group-hover:[box-shadow:5_5_0_0#8B54FF] h-fit'>
-                            <div className='transition-transform duration-1000 ease-in-out group-hover:scale-125'>
-                                <Image
-                                    src={postImage}
-                                    alt='postImage'
-                                    width={100}
-                                />
-                            </div>
-                        </div>
-                        <div className='flex-col'>
-                            <div className='flex text-purple items-center space-x-2'>
-                                <FontAwesomeIcon icon={faCalendar}/> 
-                                <p>September 25, 2022</p>  
-                            </div>
-                            <p className='group-hover:text-lightpurple font-bold'>Fluid Sizing Instead Of Media Queries</p>
-                        </div>
-                    </div>
-
-                    <div className='flex flex-row space-x-14 p-4 group '>
-                        <div className='relative overflow-hidden transition-all duration-500 [box-shadow:5_5_0_0#120A21] group-hover:[box-shadow:5_5_0_0#8B54FF] h-fit'>
-                            <div className='transition-transform duration-1000 ease-in-out group-hover:scale-125'>
-                                <Image
-                                    src={postImage}
-                                    alt='postImage'
-                                    width={100}
-                                />
-                            </div>
-                        </div>
-                        <div className='flex-col'>
-                            <div className='flex text-purple items-center space-x-2'>
-                                <FontAwesomeIcon icon={faCalendar}/> 
-                                <p>September 25, 2022</p>  
-                            </div>
-                            <p className='group-hover:text-lightpurple font-bold'>Fluid Sizing Instead Of Media Queries</p>
-                        </div>
-                    </div>
+                    <RecentPost image={blogImage} date={"September 22, 2025"} />
                 </div>
                 <div className='flex flex-col justify-center items-center p-14 space-y-10 bg-cream'>
                     <p>Lets Start Making New Marketing Project</p>

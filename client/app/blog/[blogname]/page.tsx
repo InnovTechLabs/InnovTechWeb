@@ -25,9 +25,13 @@ import linkedin from "@/public/assets/images/icon/linkedin.svg"
 import AuthorCard from "@/components/UI/Cards/AuthorCard"
 import authorImage from "@/public/assets/images/blog/author-1.jpg"
 import RecentPost from "@/components/RecentPost"
+import CommentCard from "@/components/UI/Cards/CommentCard"
+import commentImage from "@/public/assets/images/blog/avatar-1.jpg"
+import ReplyBox from "@/components/ReplyBox"
 
 export default function BlogDetail({params} : {params : {blogname : String}}) {
   const [category, setCategory] = useState([])
+  const [blogs, setBlogs] = useState([])
 
   const fetchCategoryData = async() => {
       const response = await axios.get("http://localhost:5000/category/all-categories").then((result) => {
@@ -37,8 +41,17 @@ export default function BlogDetail({params} : {params : {blogname : String}}) {
       });
   }
 
+  const fetchBlogData = async() => {
+    const response = await axios.get("http://localhost:5000/blog/all-blogs").then((result) => {
+      setBlogs(result.data)
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
+
   useEffect(() => {
       fetchCategoryData()
+      fetchBlogData()
   },[])
   return (
     <>
@@ -46,7 +59,7 @@ export default function BlogDetail({params} : {params : {blogname : String}}) {
       <Navbar/>
       <div className='flex flex-col space-y-16 space-x-0 md:space-x-16 md:flex-row justify-around items-center py-32 mx-10'>
         <div>
-            <CurrentPageCard text={"Blogs"} parent={"Home"} child={"Blogs"}/>
+            <CurrentPageCard text={"Blog Detail"} parent={"Home"} child={"Blogs"}/>
         </div>
         <div>
             <Image
@@ -55,9 +68,9 @@ export default function BlogDetail({params} : {params : {blogname : String}}) {
             />
         </div>
       </div>
-      <div className='bg-white'>
-        <div className='flex flex-col lg:flex-row space-x-14 justify-around items-center lg:items-start'>
-          <div className='flex flex-col justify-center lg:w-1/2 w-full'>
+      <div className='bg-white py-10'>
+        <div className='flex flex-col lg:flex-row space-x-14 justify-around items-center lg:items-start mx-10'>
+          <div className='flex flex-col justify-center space-y-10 lg:w-1/2 w-full'>
             <div className='[box-shadow:8_8_0_0#8B54FF] w-fit'>
               <Image
               src={blogImage}
@@ -87,6 +100,15 @@ export default function BlogDetail({params} : {params : {blogname : String}}) {
             <div className='flex justify-between items-center'>
               <RecentPost image={postImage} date={"September 25, 2022"}/>
               <RecentPost image={postImage} date={"September 25, 2022"}/>
+            </div>
+            <div className='outline outline-1 flex flex-col p-5 space-y-10'>
+                <p className='text-3xl'>Recent Comments</p>
+                <CommentCard image={commentImage} name={"Stuart G. Buckley"} date={"5 minutes ago"} comment={"Dictum tellus massa congue sapien mollis suspendisse pretiumseen Malesuada id enim vitae dignissim. Sed sit mattis adipiscineg"}/>
+                <CommentCard image={commentImage} name={"Stuart G. Buckley"} date={"5 minutes ago"} comment={"Dictum tellus massa congue sapien mollis suspendisse pretiumseen Malesuada id enim vitae dignissim. Sed sit mattis adipiscineg"}/>
+                <CommentCard image={commentImage} name={"Stuart G. Buckley"} date={"5 minutes ago"} comment={"Dictum tellus massa congue sapien mollis suspendisse pretiumseen Malesuada id enim vitae dignissim. Sed sit mattis adipiscineg"}/>
+            </div>
+            <div>
+              <ReplyBox/>
             </div>
           </div>
           <div className='flex flex-col py-10 lg:py-0 space-y-10'>
@@ -167,10 +189,7 @@ export default function BlogDetail({params} : {params : {blogname : String}}) {
         </div>
 
       </div>
-      <div>page {params.blogname}</div>
-      <div>
-
-      </div>
+      <NewsLetter/>
       <Footer/>
     </div>
     </>
