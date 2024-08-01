@@ -1,24 +1,29 @@
 'use client'
-import React, {useState, useEffect} from 'react'
 import Navbar from '@/components/Navbar'
 import CurrentPageCard from '@/components/UI/Cards/CurrentPageCard'
 import BlogPostCard from "@/components/UI/Cards/BlogPostCard"
 import Image from 'next/image';
-import markinner from "@/public/assets/images/mark/mark-inner-page.png";
-import blogImage from "@/public/assets/images/blog/blog-1.jpg"
+import AnimateButton from '@/components/UI/Buttons/AnimateButton'
+import PopularTag from "@/components/UI/Cards/PopluarTag"
+import NewsLetter from '@/components/NewsLetter'
+import Footer from '@/components/Footer'
+
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
+import Link from 'next/link'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import {faCalendar} from "@fortawesome/free-regular-svg-icons"
+
+import generateSlug from '@/utils/slug';
+
 import go from "@/public/assets/images/icon/go.svg"
-import axios from 'axios'
+import markinner from "@/public/assets/images/mark/mark-inner-page.png";
+import blogImage from "@/public/assets/images/blog/blog-1.jpg"
 import postImage from "@/public/assets/images/blog/blog-2.jpg"
-import AnimateButton from '@/components/UI/Buttons/AnimateButton'
-import PopularTag from "@/components/UI/Cards/PopluarTag"
 import marketingProjectImage from "@/public/assets/images/img-box/about-3.png"
-import NewsLetter from '@/components/NewsLetter'
-import Footer from '@/components/Footer'
 import RecentPost from '@/components/RecentPost'
-import Link from 'next/link'
 
 
 export default function Blog() {
@@ -36,6 +41,7 @@ export default function Blog() {
     const fetchBlogData = async() => {
         const response = await axios.get("http://localhost:5000/blog/all-blogs").then((result) => {
             setBlogs(result.data)
+            
         }).catch((err) => {
             console.log(err);
         });
@@ -65,12 +71,12 @@ export default function Blog() {
     <div className='bg-white p-10 '>
         <div className='flex flex-col lg:flex-row space-x-14'>
             <div className='flex-col space-y-10 w-fit lg:w-3/4'>
-                {blogs.slice(0,4).map((blog) => (
+                {blogs.slice(0,10).map((blog) => (
                     <div key={blog.id} className='cursor-pointer'>
-                        <Link href = {`/blog/${blog.blog_title}`}>
+                        <Link href = {`/blog/${generateSlug(blog.blog_title)}`}>
                             <BlogPostCard date={blog.createdAt} title={blog.blog_title} content={blog.blog_content} image={blog.blog_image}/>
                         </Link>
-                        </div>
+                    </div>
                 ))}
             </div>
             <div className='flex flex-col py-10 lg:py-0 space-y-10'>

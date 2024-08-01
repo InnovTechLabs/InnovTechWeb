@@ -16,7 +16,7 @@ export default function BlogStatsCard({author, date, comments}) {
         </div>
         <div className='flex space-x-3 items-center'>
             <FontAwesomeIcon icon = {faMessage}/>
-            <p>{comments}</p>
+            <p>Comments ({comments})</p>
         </div>
     </div>
     </>

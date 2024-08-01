@@ -1,61 +1,115 @@
 'use client'
-import React, {useState, useEffect} from 'react'
+
 import Navbar from '@/components/Navbar'
 import CurrentPageCard from '@/components/UI/Cards/CurrentPageCard'
+import BlogStatsCard from "@/components/UI/Cards/BlogStatsCard"
+import AnimateButton from '@/components/UI/Buttons/AnimateButton'
+import AuthorCard from "@/components/UI/Cards/AuthorCard"
+import CircleLinkButton from '@/components/UI/Buttons/CircleLinkButton';
+import RecentPost from "@/components/RecentPost"
+import CommentCard from "@/components/UI/Cards/CommentCard"
+import NewsLetter from '@/components/NewsLetter'
+import ReplyBox from "@/components/ReplyBox"
+import Footer from '@/components/Footer'
+import PopularTag from "@/components/UI/Cards/PopluarTag"
+
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image';
-import markinner from "@/public/assets/images/mark/mark-inner-page.png";
-import blogImage from "@/public/assets/images/blog/blog-details-1.jpg"
+import axios from 'axios';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import {faCalendar} from "@fortawesome/free-regular-svg-icons"
+import { faCalendar } from "@fortawesome/free-regular-svg-icons"
+
+import generateSlug from '@/utils/slug'
+import formatDate from '@/static/formatDate'
+
 import go from "@/public/assets/images/icon/go.svg"
+import markinner from "@/public/assets/images/mark/mark-inner-page.png";
+import blogImage from "@/public/assets/images/blog/blog-details-1.jpg"
 import postImage from "@/public/assets/images/blog/blog-2.jpg"
-import AnimateButton from '@/components/UI/Buttons/AnimateButton'
-import PopularTag from "@/components/UI/Cards/PopluarTag"
 import marketingProjectImage from "@/public/assets/images/img-box/about-3.png"
-import NewsLetter from '@/components/NewsLetter'
-import BlogStatsCard from "@/components/UI/Cards/BlogStatsCard"
-import axios from 'axios';
-import Footer from '@/components/Footer'
-import CircleLinkButton from '@/components/UI/Buttons/CircleLinkButton';
 import facebook from "@/public/assets/images/icon/facebook.svg"
 import twitter from "@/public/assets/images/icon/twitter.svg"
 import instagram from "@/public/assets/images/icon/instagram.svg"
 import linkedin from "@/public/assets/images/icon/linkedin.svg"
-import AuthorCard from "@/components/UI/Cards/AuthorCard"
 import authorImage from "@/public/assets/images/blog/author-1.jpg"
-import RecentPost from "@/components/RecentPost"
-import CommentCard from "@/components/UI/Cards/CommentCard"
 import commentImage from "@/public/assets/images/blog/avatar-1.jpg"
-import ReplyBox from "@/components/ReplyBox"
-import generateSlug from '@/utils/slug'
+import { useRouter } from 'next/navigation'
 
 export default function BlogDetail({params} : {params : {blogname : String}}) {
-  const [category, setCategory] = useState([])
-  const [blogs, setBlogs] = useState([])
+  const [category, setCategory] = useState([]);
+  const [blog, setBlog] = useState(null);
+  const [member, setMember] = useState(null);
+  const [comments, setComments] = useState([]);
+  const [redirect, setRedirect] = useState(false);
+  const router = useRouter();
 
-  const fetchCategoryData = async() => {
-      const response = await axios.get("http://localhost:5000/category/all-categories").then((result) => {
-          setCategory(result.data)
-      }).catch((err) => {
-          console.log(err);
-      });
+  const fetchCategoryData = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/category/all-categories");
+      setCategory(response.data);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
-  const fetchBlogData = async() => {
-    const slug =generateSlug(params.blogname)
-    const response = await axios.get(`http://localhost:5000/blog/${slug}`).then((result) => {
-      console.log(result.data);
-      setBlogs(result.data)
-    }).catch((err) => {
+  const fetchBlogData = async () => {
+    const slug = generateSlug(params.blogname);
+    try {
+      const response = await axios.get(`http://localhost:5000/blog/${slug}`);
+      setBlog(response.data);
+    } catch (err) {
+      if (err.response && err.response.status === 404) {
+        setRedirect(true);
+      } else {
+        console.error("Error fetching blog data:", err);
+      }
+    }
+  };
+
+  const fetchMemberData = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/member/all-members");
+      const members = response.data;
+      if (blog && blog.member_id) {
+        const matchedMember = members.find((m) => m.id === blog.member_id);
+        setMember(matchedMember || null);
+      }
+    } catch (err) {
       console.log(err);
-    });
+    }
+  }
+
+  const fetchCommentsData = async () => {
+    try {
+      if (blog && blog.id) {
+        const response = await axios.get(`http://localhost:5000/comment/all-comments/${blog.id}`);
+        setComments(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(() => {
-      fetchCategoryData()
-      fetchBlogData()
-  },[])
+    fetchCategoryData();
+    fetchBlogData();
+  }, []);
+
+  useEffect(() => {
+    if (blog) {
+      fetchMemberData();
+      fetchCommentsData();
+    }
+  }, [blog]);
+
+  useEffect(() => {
+    if (redirect) {
+      router.push('/404');
+    }
+  }, [redirect, router]);
+  
   return (
     <>
     <div>
@@ -74,45 +128,62 @@ export default function BlogDetail({params} : {params : {blogname : String}}) {
       <div className='bg-white py-10'>
         <div className='flex flex-col lg:flex-row space-x-14 justify-around items-center lg:items-start mx-10'>
           <div className='flex flex-col justify-center space-y-10 lg:w-1/2 w-full'>
-            <div className='[box-shadow:8_8_0_0#8B54FF] w-fit'>
-              <Image
-              src={blogImage}
-              alt='blogImage'
-              />
-            </div>
-            <div>
-              <BlogStatsCard author={"James B. Schwarz"} date={"September 25, 2022"} comments={"Comments (05)"}/>
-            </div>
-            <div>
-              <h1 className='text-2xl font-bold'>How Partytown Eliminates Website Bloat From Party Overcoming Imposter Syndrome</h1>
-              <p>Sit amet consectetur adipiscing elit. Et id purus sem morbi. Integer a sollicitudin ac eget sed consectetur et nam. Elementum eu egestas faucibus bibendum aliquet ullamcorper quis aliquet lorem. Mor phasellus dictum tellus, massa congue sapien mollis suspendisse pretium. Malesuada id enim vitae dignissim. Sed sit mattis adipiscing lectus consectetur. Sagittis, praesent ullamcorper cras ac at iaculis elementum in. Faucibus massa libero sit laoreet. Scelerisque egestas molestie velit ultrices sed senectus rhoncus. Eget eget enim vitae suspendisse tincidunt mi nibh orci semper. Pellentesque turpis urna, dolor et et sed egestas ac. Mi velit, quam pretium, leo. Aliquam purus erat aliquet diam tortor</p>
-            </div>
-            <div>
-              <p>Popular Tag : Marketing, Web Development, Agency </p>
-            </div>
-            <div className='flex flex-row items-center space-x-3'>
-              <p>Share News</p>
-              <CircleLinkButton image={facebook}/>
-              <CircleLinkButton image={twitter}/>
-              <CircleLinkButton image={twitter}/>
-              <CircleLinkButton image={linkedin}/>
-            </div>
-            <div>
-              <AuthorCard author={"Thomas B. Gibson"} about={"Dictum tellus massa congue sapien mollis suspendisse pretiumseen Malesuada id enim vitae dignissim. Sed sit mattis adipiscineg lectusey consectetur. Sagittis, praesent ullamcorper cras ac"} image={authorImage}/>
-            </div>
-            <div className='flex justify-between items-center'>
-              <RecentPost image={postImage} date={"September 25, 2022"}/>
-              <RecentPost image={postImage} date={"September 25, 2022"}/>
-            </div>
-            <div className='outline outline-1 flex flex-col p-5 space-y-10'>
-                <p className='text-3xl'>Recent Comments</p>
-                <CommentCard image={commentImage} name={"Stuart G. Buckley"} date={"5 minutes ago"} comment={"Dictum tellus massa congue sapien mollis suspendisse pretiumseen Malesuada id enim vitae dignissim. Sed sit mattis adipiscineg"}/>
-                <CommentCard image={commentImage} name={"Stuart G. Buckley"} date={"5 minutes ago"} comment={"Dictum tellus massa congue sapien mollis suspendisse pretiumseen Malesuada id enim vitae dignissim. Sed sit mattis adipiscineg"}/>
-                <CommentCard image={commentImage} name={"Stuart G. Buckley"} date={"5 minutes ago"} comment={"Dictum tellus massa congue sapien mollis suspendisse pretiumseen Malesuada id enim vitae dignissim. Sed sit mattis adipiscineg"}/>
-            </div>
-            <div>
-              <ReplyBox/>
-            </div>
+          {
+            blog && member && comments ? 
+            <>
+              <div className='[box-shadow:8_8_0_0#8B54FF] w-fit'>
+                <Image
+                src={`/assets/images/blog/${blog.blog_image}`}
+                alt='blogImage'
+                width={1000}
+                height={1000}
+                />
+              </div>
+              <div>
+                <BlogStatsCard author={member.member_name} date={`${formatDate(blog.createdAt)}`} comments={comments.length}/>
+              </div>
+              <div>
+                <h1 className='text-2xl font-bold'>{blog.blog_title}</h1>
+                <p>{blog.blog_content}</p>
+              </div>
+              <div>
+                <p>Popular Tag : Marketing, Web Development, Agency </p>
+              </div>
+              <div className='flex flex-row items-center space-x-3'>
+                <p>Share News</p>
+                <CircleLinkButton image={facebook}/>
+                <CircleLinkButton image={twitter}/>
+                <CircleLinkButton image={twitter}/>
+                <CircleLinkButton image={linkedin}/>
+              </div>
+              <div>
+                  <AuthorCard author={member.member_name} about={member.member_about} image={member.member_image}/>
+              </div>
+              <div className='flex flex-col md:flex-row justify-between items-center'>
+                <RecentPost image={postImage} date={"September 25, 2022"}/>
+                <RecentPost image={postImage} date={"September 25, 2022"}/>
+              </div>
+              <div className='outline outline-1 flex flex-col p-5 space-y-10'>
+                  <p className='text-3xl'>Recent Comments</p>
+                  {comments.length? (
+                    comments.map((c) => (
+                      <div key={c.id}>
+                        <CommentCard image={commentImage} name={c.fullname} date={c.createdAt} comment={c.comment}/>
+                      </div>
+                    ))
+                  ) : (
+                  <div className='flex md:flex-row flex-col justify-center items-center bg-cream [box-shadow:5_5_0_0#120A21] p-5 space-y-3 space-x-5'>
+                      No Comments
+                  </div>
+                  )}
+              </div>
+                </> : 
+                <>
+                </>
+              }
+              <div>
+                <ReplyBox/>
+              </div>
           </div>
           <div className='flex flex-col py-10 lg:py-0 space-y-10'>
                 <div className='outline outline-1 p-10 space-y-5'>

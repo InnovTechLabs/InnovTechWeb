@@ -2,12 +2,13 @@ import React from 'react'
 import Image from "next/image"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-regular-svg-icons'
+import timeAgo from "@/utils/timeAgo"
 
 
 export default function CommentCard({image, name, comment, date}) {
   return (
     <>
-    <div className='flex md:flex-row flex-col justify-center items-center bg-cream [box-shadow:5_5_0_0#120A21] p-5 space-y-3 space-x-5'>
+    <div className='flex md:flex-row flex-col items-center bg-cream [box-shadow:5_5_0_0#120A21] p-5 space-y-3 space-x-5'>
         <div>
             <Image
                 src={image}
@@ -24,7 +25,7 @@ export default function CommentCard({image, name, comment, date}) {
                     <FontAwesomeIcon icon={faClock}/>
                 </p>
                 <p >
-                    {date}
+                    {timeAgo(date)}
                 </p>
             </div>
             <div>

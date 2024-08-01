@@ -11,7 +11,7 @@ export default function SpeechBubble() {
         <div className='bg-white transition-all delay-150 hover:[box-shadow:-6_-6_0_0#9664FF] rounded-lg p-5'>
           <p>I would recommend innov for anyone trying to get the word out about their business. It has saved me so much time!</p>
         </div>
-        <div class={`${speechbubblestyle['triangle']}`}>
+        <div className={`${speechbubblestyle['triangle']}`}>
         </div>
       </div>
       <div className='flex items-center mx-16 space-x-5'>

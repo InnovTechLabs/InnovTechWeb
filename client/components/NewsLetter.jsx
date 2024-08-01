@@ -39,12 +39,12 @@ export default function NewsLetter() {
                 <StaticButtonSecondary text={"Our NewsLetter"}/>
             </div>
             <p className='text-white text-5xl font-manrope font-semibold'>Send Your Email To Get Updates</p>
-            <div class="relative flex items-center h-20"> 
-                <div class="absolute top-1/2 transform -translate-y-1/2 left-5 text-darkgray">
+            <div className="relative flex items-center h-20"> 
+                <div className="absolute top-1/2 transform -translate-y-1/2 left-5 text-darkgray">
                     <FontAwesomeIcon icon={faMessage} size='xl'/>
                 </div>
-                <input type="text" class="h-20 pl-16 focus:outline-none w-full" placeholder="Enter Email Address"/>
-                <div class="absolute top-1/2 transform -translate-y-1/2 right-3">
+                <input type="text" className="h-20 pl-16 focus:outline-none w-full" placeholder="Enter Email Address"/>
+                <div className="absolute top-1/2 transform -translate-y-1/2 right-3">
                     <button>
                         <AnimateButtonSecondary text={"Send"}/>  
                     </button>

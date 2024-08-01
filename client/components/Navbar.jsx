@@ -35,18 +35,26 @@ export default function Navbar() {
             <div className='hidden xl:flex flex-row mr-16 px-16 py-6 border-[1px] [box-shadow:10_10px_0_0_]'>
                 {NavHeadings.map((heading, index) => 
                     heading.subpath ? (
-                        <div key={index} className='group flex flex-row items-center cursor-pointer relative tracking-wider px-3 py-1 transition-all duration-300 ease-in-out hover:bg-purple hover:text-white hover:[box-shadow:5px_5px_0_0_#010C2A] hover:rounded-md'>
+                        <div key={heading.text} className='group flex flex-row items-center cursor-pointer relative tracking-wider px-3 py-1 transition-all duration-300 ease-in-out hover:bg-purple hover:text-white hover:[box-shadow:5px_5px_0_0_#010C2A] hover:rounded-md'>
                             {heading.text}{<Image src={DropDown} alt = "DropDown" width={20} height={20}/>}
                             <div className="dropdown-menu absolute hidden transition-all delay-900 ease-in-out h-2 top-8 py-2 w-72 group-hover:grid">
-                                {heading.subpath.map((subheadings, subIndex) => (
-                                    <div key={subIndex}>
-                                        <Link href={subheadings.subsubPath}><div className='cursor-pointer bg-white text-black border-b-gray shadow-lg shadow-purple px-5 py-5 border-b-[1px] transition-all delay-200 ease-in-out hover:pl-10 hover:text-purple' key={subIndex}>{subheadings.subText}</div></Link>
+                                {heading.subpath.map((subheadings) => (
+                                    <div key={subheadings.subText}>
+                                        <Link href={subheadings.subsubPath}>
+                                            <div className='cursor-pointer bg-white text-black border-b-gray shadow-lg shadow-purple px-5 py-5 border-b-[1px] transition-all delay-200 ease-in-out hover:pl-10 hover:text-purple'>
+                                                {subheadings.subText}
+                                            </div>
+                                        </Link>
                                     </div>
                                 ))}
                             </div>
                         </div>
                     ) : (
-                        <Link href={heading.path}><div key={index} className='cursor-pointer px-4 py-1 transition-all duration-300 ease-in-out hover:bg-purple hover:text-white hover:rounded-md hover:[box-shadow:3px_4px_0_0_#010C2A]'>{heading.text}</div></Link>
+                        <Link href={heading.path} key={heading.text}>
+                            <div className='cursor-pointer px-4 py-1 transition-all duration-300 ease-in-out hover:bg-purple hover:text-white hover:rounded-md hover:[box-shadow:3px_4px_0_0_#010C2A]'>
+                                {heading.text}
+                            </div>
+                        </Link>
                     )
                 )}
             </div>
@@ -91,17 +99,19 @@ export default function Navbar() {
         <div className='flex flex-row'>
         {navToggle ? (
             <div className='flex flex-col w-full mx-10 xl:hidden'>
-                {NavHeadings.map((heading, index) => (
-                    <div key={index} className='mb-4'>
+                {NavHeadings.map((heading) => (
+                    <div key={heading.text} className='mb-4'>
                         <div className='group relative dropdown tracking-wider flex flex-col cursor-pointer'>
-                            <div className='flex flex-row justify-between '>
+                            <div className='flex flex-row justify-between'>
                                 {heading.text}
                                 {heading.subpath && <Image src={DropDown} alt="DropDown" width={20} height={20}/>}
                             </div>
                             {heading.subpath && (
                                 <div className="group-hover:block dropdown-menu hidden">
-                                    {heading.subpath.map((subheadings, subIndex) => (
-                                        <div className='block cursor-pointer py-2 ml-10' key={subIndex}>{subheadings.subText}</div>
+                                    {heading.subpath.map((subheadings) => (
+                                        <div className='block cursor-pointer py-2 ml-10' key={subheadings.subText}>
+                                            {subheadings.subText}
+                                        </div>
                                     ))}
                                 </div>
                             )}

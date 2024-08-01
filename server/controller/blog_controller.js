@@ -48,7 +48,7 @@ module.exports = {
             })
 
             if(blog){
-                res.send(blog)
+                res.status(200).send(blog)
             }
             else{
                 res.status(404).json({"message" : "Blog Not Found"})
