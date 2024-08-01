@@ -4,6 +4,13 @@ require('dotenv').config()
 const express = require("express")
 const bodyParser = require("body-parser")
 const app = express()
+const cors = require("cors")
+const corsOptions = {
+    origin: 'http://localhost:3000', // your frontend URL
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    // credentials: true, // enable set cookie
+    allowedHeaders: 'Content-Type, Authorization', // add other headers as needed
+  };
 const PORT = process.env.BACKEND_PORT || 5000;
 
 const user_route = require("./routes/user_route")
@@ -27,6 +34,7 @@ const CommentTable = require('./models/comment_table')
 const { db_connection, sequelize } = require('./config/db');
 
 //parsing of contents
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

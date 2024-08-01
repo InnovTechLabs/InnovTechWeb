@@ -17,6 +17,8 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import {faCalendar} from "@fortawesome/free-regular-svg-icons"
 
 import generateSlug from '@/utils/slug';
+import limitString from "@/utils/limitString"
+import formatDate from '@/utils/formatDate';
 
 import go from "@/public/assets/images/icon/go.svg"
 import markinner from "@/public/assets/images/mark/mark-inner-page.png";
@@ -28,7 +30,7 @@ import RecentPost from '@/components/RecentPost'
 
 export default function Blog() {
     const [category, setCategory] = useState([])
-    const [blogs, setBlogs] = useState([]);
+    const [allblogs, setallBlogs] = useState([]);
 
     const fetchCategoryData = async() => {
         const response = await axios.get("http://localhost:5000/category/all-categories").then((result) => {
@@ -38,9 +40,9 @@ export default function Blog() {
         });
     }
 
-    const fetchBlogData = async() => {
+    const fetchAllBlogData = async() => {
         const response = await axios.get("http://localhost:5000/blog/all-blogs").then((result) => {
-            setBlogs(result.data)
+            setallBlogs(result.data)
             
         }).catch((err) => {
             console.log(err);
@@ -50,7 +52,7 @@ export default function Blog() {
 
     useEffect(() => {
         fetchCategoryData();
-        fetchBlogData()
+        fetchAllBlogData()
     },[])
 
   return (
@@ -71,10 +73,10 @@ export default function Blog() {
     <div className='bg-white p-10 '>
         <div className='flex flex-col lg:flex-row space-x-14'>
             <div className='flex-col space-y-10 w-fit lg:w-3/4'>
-                {blogs.slice(0,10).map((blog) => (
+                {allblogs.slice(0,4).map((blog) => (
                     <div key={blog.id} className='cursor-pointer'>
                         <Link href = {`/blog/${generateSlug(blog.blog_title)}`}>
-                            <BlogPostCard date={blog.createdAt} title={blog.blog_title} content={blog.blog_content} image={blog.blog_image}/>
+                            <BlogPostCard date={blog.createdAt} title={blog.blog_title} content={`${limitString(blog.blog_content, 200)}`} image={blog.blog_image}/>
                         </Link>
                     </div>
                 ))}
@@ -113,7 +115,13 @@ export default function Blog() {
                 <div className='outline outline-1 p-4'>
                     <p>Recent Post</p>
 
-                    <RecentPost image={blogImage} date={"September 22, 2025"} />
+                    {allblogs.slice(0,4).map((blog) => (
+                    <div key={blog.id}>
+                        <Link href = {`/blog/${generateSlug(blog.blog_title)}`}>
+                        <RecentPost image={blog.blog_image} date={formatDate(blog.createdAt)} title={blog.blog_title}/>
+                        </Link>
+                    </div>
+                    ))}
                 </div>
                 <div className='flex flex-col justify-center items-center p-14 space-y-10 bg-cream'>
                     <p>Lets Start Making New Marketing Project</p>

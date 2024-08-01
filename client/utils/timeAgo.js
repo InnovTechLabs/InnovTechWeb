@@ -20,7 +20,7 @@ const timeAgo = (dateString) => {
       }
     }
   
-    return 'just now';
+    return 'Just Now';
 }
 
 export default timeAgo;

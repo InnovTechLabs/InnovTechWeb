@@ -2,15 +2,19 @@ import React from 'react'
 import Image from 'next/image'
 import FooterLogo from "@/public/assets/images/logo/logo@2x.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebook, faInstagram, faLinkedin, faXTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
+import facebook from "@/public/assets/images/icon/facebook.svg"
+import twitter from "@/public/assets/images/icon/twitter.svg"
+import instagram from "@/public/assets/images/icon/instagram.svg"
+import linkedin from "@/public/assets/images/icon/linkedin.svg"
+import CircleLinkButton from './UI/Buttons/CircleLinkButton'
 
 export default function Footer() {
   return (
     <>
-    <div className='mx-auto px-5'>
-        <div className='flex flex-col space-y-10 md:flex-row md:items-start md:justify-around md:px-32 md:space-x-32'>
+    <div className='mx-auto mt-10'>
+        <div className='flex flex-col space-y-10 md:flex-row md:items-start md:justify-around mx-10 md:mx-10 md:space-x-32'>
 
             <div className='w-full space-y-5 md:flex-1 md:flex-col md:w-1/4'>
                 <Image
@@ -20,11 +24,11 @@ export default function Footer() {
                     height = {190}
                 />
                 <p>Innov Tech is a top web design and digital marketing agency in Nepal, providing customized websites, UX design, SEO, e-commerce, copywriting, and responsive design services. We prioritize customer satisfaction, using cutting-edge technology and creative solutions for businesses of all sizes.</p>
-                <div className='flex flex-row space-x-5'>
-                    <FontAwesomeIcon icon={faFacebook} style={{width : "20px"}}/>
-                    <FontAwesomeIcon icon={faXTwitter} style={{width : "20px"}}/>
-                    <FontAwesomeIcon icon={faLinkedin} style={{width : "20px"}}/>
-                    <FontAwesomeIcon icon={faInstagram} style={{width : "20px"}}/>
+                <div className='flex space-x-5'>
+                    <CircleLinkButton image={facebook}/>
+                    <CircleLinkButton image={twitter}/>
+                    <CircleLinkButton image={instagram}/>
+                    <CircleLinkButton image={linkedin}/>
                 </div>
             </div>
 

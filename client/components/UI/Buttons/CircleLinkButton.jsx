@@ -9,6 +9,7 @@ export default function CircleLinkButton({image}) {
         src={image}
         alt='image'
         width={15}
+        className=''
       />
     </div>
   )

@@ -1,13 +1,14 @@
 {
   "main": "app.js",
   "scripts": {
-    "start" : "npm run dev",
-    "migrate" : "npx sequelize-cli db_migrate",
-    "down" : "npx sequelize-cli db:migrate:undo",
-    "make migrations" : "npx sequelize migration:generate --name"
+    "start": "npm run dev",
+    "migrate": "npx sequelize-cli db_migrate",
+    "down": "npx sequelize-cli db:migrate:undo",
+    "make migrations": "npx sequelize migration:generate --name"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mongoose": "^8.4.5",

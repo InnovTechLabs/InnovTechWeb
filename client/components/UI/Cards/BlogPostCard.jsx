@@ -2,7 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendar } from '@fortawesome/free-regular-svg-icons'
 import Image from 'next/image'
-import formatDate from "@/static/formatDate"
+import formatDate from "@/utils/formatDate"
 
 export default function BlogPostCard({date, title, content, image}) {
     const imageUrl = `/assets/images/blog/${image}`

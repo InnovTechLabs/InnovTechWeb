@@ -15,25 +15,24 @@ import PopularTag from "@/components/UI/Cards/PopluarTag"
 
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image';
+import Link from 'next/link'
 import axios from 'axios';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { faCalendar } from "@fortawesome/free-regular-svg-icons"
+
 
 import generateSlug from '@/utils/slug'
-import formatDate from '@/static/formatDate'
+import formatDate from "@/utils/formatDate"
 
 import go from "@/public/assets/images/icon/go.svg"
 import markinner from "@/public/assets/images/mark/mark-inner-page.png";
-import blogImage from "@/public/assets/images/blog/blog-details-1.jpg"
 import postImage from "@/public/assets/images/blog/blog-2.jpg"
 import marketingProjectImage from "@/public/assets/images/img-box/about-3.png"
 import facebook from "@/public/assets/images/icon/facebook.svg"
 import twitter from "@/public/assets/images/icon/twitter.svg"
 import instagram from "@/public/assets/images/icon/instagram.svg"
 import linkedin from "@/public/assets/images/icon/linkedin.svg"
-import authorImage from "@/public/assets/images/blog/author-1.jpg"
 import commentImage from "@/public/assets/images/blog/avatar-1.jpg"
 import { useRouter } from 'next/navigation'
 
@@ -43,6 +42,7 @@ export default function BlogDetail({params} : {params : {blogname : String}}) {
   const [member, setMember] = useState(null);
   const [comments, setComments] = useState([]);
   const [redirect, setRedirect] = useState(false);
+  const [allblogs, setallblogs] = useState([])
   const router = useRouter();
 
   const fetchCategoryData = async () => {
@@ -52,6 +52,14 @@ export default function BlogDetail({params} : {params : {blogname : String}}) {
     } catch (err) {
       console.log(err);
     }
+  }
+
+  const fetchAllBlogs = () => {
+    const response = axios.get("http://localhost:5000/blog/all-blogs").then((result) => {
+      setallblogs(result.data)
+    }).catch((err) => {
+      console.log(err);
+    });
   }
 
   const fetchBlogData = async () => {
@@ -93,8 +101,18 @@ export default function BlogDetail({params} : {params : {blogname : String}}) {
   }
 
   useEffect(() => {
-    fetchCategoryData();
     fetchBlogData();
+  },[])
+  
+  useEffect(() => {
+    if (redirect) {
+      router.push('/404');
+    }
+  }, [redirect, router]);
+  
+  useEffect(() => {
+    fetchCategoryData();
+    fetchAllBlogs();
   }, []);
 
   useEffect(() => {
@@ -104,14 +122,10 @@ export default function BlogDetail({params} : {params : {blogname : String}}) {
     }
   }, [blog]);
 
-  useEffect(() => {
-    if (redirect) {
-      router.push('/404');
-    }
-  }, [redirect, router]);
   
   return (
     <>
+    {blog? (
     <div>
       <Navbar/>
       <div className='flex flex-col space-y-16 space-x-0 md:space-x-16 md:flex-row justify-around items-center py-32 mx-10'>
@@ -129,7 +143,7 @@ export default function BlogDetail({params} : {params : {blogname : String}}) {
         <div className='flex flex-col lg:flex-row space-x-14 justify-around items-center lg:items-start mx-10'>
           <div className='flex flex-col justify-center space-y-10 lg:w-1/2 w-full'>
           {
-            blog && member && comments ? 
+            member && comments ? 
             <>
               <div className='[box-shadow:8_8_0_0#8B54FF] w-fit'>
                 <Image
@@ -153,21 +167,26 @@ export default function BlogDetail({params} : {params : {blogname : String}}) {
                 <p>Share News</p>
                 <CircleLinkButton image={facebook}/>
                 <CircleLinkButton image={twitter}/>
-                <CircleLinkButton image={twitter}/>
+                <CircleLinkButton image={instagram}/>
                 <CircleLinkButton image={linkedin}/>
               </div>
               <div>
                   <AuthorCard author={member.member_name} about={member.member_about} image={member.member_image}/>
               </div>
               <div className='flex flex-col md:flex-row justify-between items-center'>
-                <RecentPost image={postImage} date={"September 25, 2022"}/>
-                <RecentPost image={postImage} date={"September 25, 2022"}/>
+                {allblogs.slice(0,2).map((blog) => (
+                  <div key={blog.id}>
+                    <Link href = {`/blog/${generateSlug(blog.blog_title)}`}>
+                      <RecentPost image={blog.blog_image} date={formatDate(blog.createdAt)} title={blog.blog_title}/>
+                    </Link>
+                  </div>
+                ))}
               </div>
               <div className='outline outline-1 flex flex-col p-5 space-y-10'>
                   <p className='text-3xl'>Recent Comments</p>
                   {comments.length? (
                     comments.map((c) => (
-                      <div key={c.id}>
+                      <div key={c.id }>
                         <CommentCard image={commentImage} name={c.fullname} date={c.createdAt} comment={c.comment}/>
                       </div>
                     ))
@@ -182,7 +201,8 @@ export default function BlogDetail({params} : {params : {blogname : String}}) {
                 </>
               }
               <div>
-                <ReplyBox/>
+                {blog && <ReplyBox blog_id={blog.id} fetchComments={fetchCommentsData}/>}
+                
               </div>
           </div>
           <div className='flex flex-col py-10 lg:py-0 space-y-10'>
@@ -218,11 +238,13 @@ export default function BlogDetail({params} : {params : {blogname : String}}) {
 
                 <div className='outline outline-1 p-4'>
                     <p>Recent Post</p>
-
-                    <RecentPost image={postImage} date={"September 25, 2022"}/>
-                    <RecentPost image={postImage} date={"September 25, 2022"}/>
-                    <RecentPost image={postImage} date={"September 25, 2022"}/>
-                    <RecentPost image={postImage} date={"September 25, 2022"}/>
+                    {allblogs.slice(0,4).map((blog) => (
+                      <div key={blog.id}>
+                        <Link href = {`/blog/${generateSlug(blog.blog_title)}`}>
+                          <RecentPost image={blog.blog_image} date={formatDate(blog.createdAt)} title={blog.blog_title}/>
+                        </Link>
+                      </div>
+                    ))}
                 </div>
                 <div className='flex flex-col justify-center items-center p-14 space-y-10 bg-cream'>
                     <p>Lets Start Making New Marketing Project</p>
@@ -266,6 +288,11 @@ export default function BlogDetail({params} : {params : {blogname : String}}) {
       <NewsLetter/>
       <Footer/>
     </div>
+    ) : (
+      <div>
+
+      </div>
+    )}
     </>
   )
 }
