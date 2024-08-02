@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import Image from 'next/image'
 
 import Preloader from "@/components/UI/Animation/Preloader"
@@ -40,7 +41,6 @@ import downwardThred from "@/public/assets/images/mark/mark-testi-5.png"
 import circularthread from "@/public/assets/images/mark/mark-testi.png"
 
 import imgstyle from "@/public/styles/imageanimate.module.css"
-import axios from 'axios'
 
 export default function Home() {
   const [showOverlay, setShowOverlay] = useState(false)
@@ -181,14 +181,6 @@ export default function Home() {
                     </div>
                   ))}
             </div>
-            <div className='space-y-5 lg:flex md:space-x-5 lg:space-x-5 items-center'>
-                  {categories.slice(4,7).map((category) => (
-                    <div key={category.id}>
-                    <ServicesCard heading={category.category_name} description={category.category_description} image={category.category_image} />
-                    </div>
-                  ))}
-            </div>
-
           </div>   
         </div>
 
@@ -206,13 +198,13 @@ export default function Home() {
         <div className='flex flex-col md:flex-row justify-around py-5'>
           <div className='flex-col space-y-5 mx-10'>
             <div className='pl-16'>
-              <ListingCard number={"01"} text={"Creative Thinking and Originality"}/>
+              <ListingCard number={"01"} cardColor = {"bg-white"} bgColor={"bg-purple"} textColor={"text-white"} shadowColor={"#120A21"} text={"Creative Thinking and Originality"}/>
             </div>
             <div className='pr-16'>
-              <ListingCard number={"02"} text={"Collaboration and Communication"}/>
+              <ListingCard number={"02"} cardColor = {"bg-white"} bgColor={"bg-yellow"} textColor={"text-black"} shadowColor={"#120A21"} text={"Collaboration and Communication"}/>
             </div>
             <div className='pl-16'>
-              <ListingCard number={"03"} text={"Customer Focus and Results-Driven"}/>
+              <ListingCard number={"03"} cardColor = {"bg-white"} bgColor={"bg-black"} textColor={"text-white"} shadowColor={"#8B54FF"} text={"Customer Focus and Results-Driven"}/>
             </div>
           </div>
           <div className={imgstyle['move-top-to-bottom']}>
