@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 
 import Preloader from "@/components/UI/Animation/Preloader"
@@ -40,14 +40,28 @@ import downwardThred from "@/public/assets/images/mark/mark-testi-5.png"
 import circularthread from "@/public/assets/images/mark/mark-testi.png"
 
 import imgstyle from "@/public/styles/imageanimate.module.css"
+import axios from 'axios'
 
 export default function Home() {
   const [showOverlay, setShowOverlay] = useState(false)
+  const [categories, setCategories] = useState([])
 
   const handleTogglePlay = (id : Number) => {
     setShowOverlay(!showOverlay)
     console.log(id)
   }
+
+  const fetchCategory = async() => {
+    const response = await axios.get("http://localhost:5000/category/all-categories").then((result) => {
+      setCategories(result.data)
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
+
+  useEffect(() => {
+    fetchCategory()
+  },[])
 
   return (
     <>
@@ -159,15 +173,22 @@ export default function Home() {
             </div>
           </div>
 
-          <div className='space-y-5 md:flex-row lg:flex md:space-y-5 lg:space-x-5 items-center'>
-            <div className='space-y-5 sm:flex md:space-x-5 lg:space-x-5 items-center'>
-              <ServicesCard heading={ServiceCardInfo.seo.heading} description={ServiceCardInfo.seo.description} image={ServiceCardInfo.seo.image}/>
-              <ServicesCard heading={ServiceCardInfo.email.heading} description={ServiceCardInfo.email.description} image={ServiceCardInfo.email.image}/>
+          <div className='space-y-5 sm:flex-col md:flex-col lg:flex md:space-y-5 lg:space-x-5 items-center'>
+            <div className='space-y-5 lg:flex  md:space-x-5 lg:space-x-5 items-center'>
+                  {categories.slice(0,4).map((category) => (
+                    <div key={category.id}>
+                    <ServicesCard heading={category.category_name} description={category.category_description} image={category.category_image} />
+                    </div>
+                  ))}
             </div>
-            <div className='space-y-5 sm:flex md:space-x-5 lg:space-x-5 items-center'>
-              <ServicesCard heading={ServiceCardInfo.webDevelopment.heading} description={ServiceCardInfo.webDevelopment.description} image={ServiceCardInfo.webDevelopment.image}/>
-              <ServicesCard heading={ServiceCardInfo.uiux.heading} description={ServiceCardInfo.uiux.description} image={ServiceCardInfo.uiux.image}/>
+            <div className='space-y-5 lg:flex md:space-x-5 lg:space-x-5 items-center'>
+                  {categories.slice(4,7).map((category) => (
+                    <div key={category.id}>
+                    <ServicesCard heading={category.category_name} description={category.category_description} image={category.category_image} />
+                    </div>
+                  ))}
             </div>
+
           </div>   
         </div>
 

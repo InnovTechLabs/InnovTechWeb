@@ -42,8 +42,9 @@ export default function Blog() {
 
     const fetchAllBlogData = async() => {
         const response = await axios.get("http://localhost:5000/blog/all-blogs").then((result) => {
-            setallBlogs(result.data)
-            
+            if(result){
+                setallBlogs(result.data)
+            }
         }).catch((err) => {
             console.log(err);
         });

@@ -10,14 +10,16 @@ export default function ServicesCard({ heading, description, image }) {
             <div className='flex flex-col items-center space-y-6 py-10 px-4'>
                 <div className={`bg-purple p-3 [box-shadow:3px_3px_0_0_#010C2A] rounded-full `}>
                     <Image
-                        src={image}
+                        src={`/assets/images/icon/${image}`}
                         alt='image'
+                        width={50}
+                        height={50}
                     />
                 </div>
                 <div>
-                    <p className='text-2xl font-semibold'>{heading}</p>
+                    <p className='text-2xl font-semibold capitalize'>{heading}</p>
                 </div>
-                <div>
+                <div className='capitalize'>
                     {description}
                 </div>
                 <div className='flex flex-row space-x-2'>

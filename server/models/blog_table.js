@@ -1,6 +1,7 @@
 const { DataTypes } = require("sequelize")
 const { sequelize } = require("../config/db")
 const MemberTable = require("./member_table")
+const CategoryTable = require("./category_table")
 
 const BlogTable = sequelize.define(
     'blog_table',
@@ -12,6 +13,13 @@ const BlogTable = sequelize.define(
                 key : 'id'
             }
         }, 
+        category_id : {
+            type : DataTypes.INTEGER,
+            references : {
+                model : CategoryTable,
+                key : 'id'
+            }
+        },
         blog_title : {
             type : DataTypes.STRING,
             allowNull : false,

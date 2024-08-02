@@ -4,11 +4,17 @@ import FooterLogo from "@/public/assets/images/logo/logo@2x.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
+
+import location from "@/public/assets/images/icon/location.svg"
+import envelope from "@/public/assets/images/icon/envelope.svg"
+import call from "@/public/assets/images/icon/call.svg"
+
 import facebook from "@/public/assets/images/icon/facebook.svg"
 import twitter from "@/public/assets/images/icon/twitter.svg"
 import instagram from "@/public/assets/images/icon/instagram.svg"
 import linkedin from "@/public/assets/images/icon/linkedin.svg"
 import CircleLinkButton from './UI/Buttons/CircleLinkButton'
+import CircleButtonQuarternary from "@/components/UI/Buttons/CircleButtonQuarternary"
 
 export default function Footer() {
   return (
@@ -24,7 +30,7 @@ export default function Footer() {
                     height = {190}
                 />
                 <p>Innov Tech is a top web design and digital marketing agency in Nepal, providing customized websites, UX design, SEO, e-commerce, copywriting, and responsive design services. We prioritize customer satisfaction, using cutting-edge technology and creative solutions for businesses of all sizes.</p>
-                <div className='flex space-x-5'>
+                <div className='flex space-x-5 w-max'>
                     <CircleLinkButton image={facebook}/>
                     <CircleLinkButton image={twitter}/>
                     <CircleLinkButton image={instagram}/>
@@ -54,24 +60,24 @@ export default function Footer() {
             </div>
             
             <div className='flex-1'>
-                <div className='flex flex-col  space-y-8'>
+                <div className='flex flex-col  space-y-8 w-max'>
                     <p className=''>Supports</p>
                     <div className='flex flex-row items-center space-x-4'>
-                        <FontAwesomeIcon icon={faLocationDot} style={{width : "20px"}}/>
+                        <CircleButtonQuarternary image={location}/>
                         <div className='flex flex-col'>
                             <span>Location</span>
                             <span>Maharajgunj,Kathmandu</span>
                         </div>
                     </div>
                     <div className='flex flex-row items-center space-x-4'>
-                        <FontAwesomeIcon icon={faEnvelope} style={{width : "20px"}}/>
+                        <CircleButtonQuarternary image={envelope}/>
                         <div className='flex flex-col'>
                             <span>Email Us</span>
                             <span>innovNp@outlook.com</span>
                         </div>
                     </div>
                     <div className='flex flex-row items-center space-x-4'>
-                        <FontAwesomeIcon icon={faPhone} style={{width : "20px"}}/>
+                        <CircleButtonQuarternary image={call}/>
                         <div className='flex flex-col'>
                             <span>Phone No</span>
                             <span>Call +977 9851 029 415</span>

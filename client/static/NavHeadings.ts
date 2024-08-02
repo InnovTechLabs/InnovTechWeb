@@ -4,28 +4,28 @@ export const NavHeadings = [
     subpath : ""},
 
     {text : "Services", 
-    path : "/service",
+    path : "/services",
     subpath : [
         {subText : "Digital Marketing", 
-        subsubPath : "/service/digital-marketing"},
+        subsubPath : "/services/digital-marketing"},
 
         {subText : "SEO Service",
-        subsubPath : "/service/seo-service"},
+        subsubPath : "/services/seo-service"},
 
         {subText : "Web Development",
-        subsubPath : "/service/web-development"},
+        subsubPath : "/services/web-development"},
 
         {subText : "Social Media Marketing",
-        subsubPath : "/service/social-media-marketing"},
+        subsubPath : "/services/social-media-marketing"},
 
         {subText : "Graphics Design",
-        subsubPath : "/service/graphics-desigining"},
+        subsubPath : "/services/graphics-desigining"},
 
         {subText : "Video Creation",
-        subsubPath : "/service/video-creation"},
+        subsubPath : "/services/video-creation"},
 
         {subText : "Mobile App Development",
-        subsubPath : "/service/mobile-app-development"},
+        subsubPath : "/services/mobile-app-development"},
     ]},
 
     {text : "Pages",

@@ -51,8 +51,8 @@ export default function TopSlider(props) {
 
 
   return (
-    <div className="mx-auto px-10 my-28">
-      <div className="flex flex-none justify-between py-5">
+    <div className="mx-10 my-28">
+      <div className="flex flex-none justify-around py-5">
         <button onClick={handlePreviousContent} className="hidden md:block">
           <FontAwesomeIcon
             icon={faAngleLeft}
@@ -60,16 +60,16 @@ export default function TopSlider(props) {
             className="bg-white text-purple shadow-lg py-4 px-5 rounded-full transition-all delay-150 ease-in-out hover:bg-purple hover:text-white hover:[box-shadow:-3_-3_0_0_#120A21]"
           />
         </button>
-        <div className="flex flex-col-reverse items-start justify-between lg:flex-row lg:justify-between">
-          <div >          
+        <div className="flex flex-col-reverse items-start justify-around lg:flex-row lg:justify-around md:mx-52">
+          <div className="w-fit" >          
             {sliderData.map((data, index) => (
               <div key={index} className="space-y-10">
-                <div className={`w-[300] sm:w-[500] ${activeIndex === index? "" : "hidden"}`}>
+                <div className={`w-[400] sm:w-[500] ${activeIndex === index? "" : "hidden"}`}>
                   <StaticButton text={`Best ${data.category_name} Agency In Nepal`}/>
                 </div>
                 <div className={`space-y-5 ${activeIndex === index ? "" : "hidden"}`}>
-                  <h1 className="text-5xl w-min text-navyblue capitalize underline underline-offset-8 font-bold">{data.category_name}</h1>
-                  <h3 className="w-max">{data.category_description}</h3>
+                  <h1 className="text-6xl w-min text-navyblue capitalize underline underline-offset-8 font-bold">{data.category_name}</h1>
+                  <h3 className="">{data.category_description}</h3>
                 </div>
                 <div className = {`flex flex-row space-x-5 items-center ${activeIndex === index ? "" : "hidden"}`}>
                   <button>
@@ -83,19 +83,20 @@ export default function TopSlider(props) {
               </div>
             ))}
           </div>
-          <div className="relative left-0 bottom-0 top-0 right-0">
+          <div className="relative left-0 bottom-0 top-0 right-0 w-3/4 mx-5 my-5">
             <div className="absolute z-10 p-4">
               <Image
                 src={sampleImage}
                 alt="sampleImage"
-                className="w-[250] md:w-[500]"
+                width={600}
+                height={600}
               />
             </div>
             <div className="mx-auto z-0 ">
               <Image
                 src={worldmap}
                 alt="worldmap"
-                className="w-[250] md:w-[550]"
+                className="w-[350] md:w-[650]"
               />
             </div>
           </div>

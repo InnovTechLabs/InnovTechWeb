@@ -21,26 +21,31 @@ export default function ReplyBox({blog_id, fetchComments}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(`http://localhost:5000/comment/add-comment/${blog_id}`, {
-      fullname : replyMessage.fullname ,
-      email : replyMessage.email,
-      comment : replyMessage.comment 
-    },
-    {
-      headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json',
+    if(!replyMessage.fullname == "" && !replyMessage.email == ""  && !replyMessage.comment == ""){
+      axios.post(`http://localhost:5000/comment/add-comment/${blog_id}`, {
+        fullname : replyMessage.fullname ,
+        email : replyMessage.email,
+        comment : replyMessage.comment 
       },
-      withCredentials : false
-    },
-  ).then((result) => {
-      if(result){
-        fetchComments()
-        console.log(result.data.message);
-      }
-    }).catch((err) => {
-      console.log(err);
-    });
+      {
+        headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+        },
+        withCredentials : false
+      },
+    ).then((result) => {
+        if(result){
+          fetchComments()
+          console.log(result.data.message);
+        }
+      }).catch((err) => {
+        console.log(err);
+      });
+    }
+    else{
+      console.log("Fields are empty");
+    }
   }
 
 

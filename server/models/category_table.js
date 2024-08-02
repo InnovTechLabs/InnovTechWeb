@@ -13,7 +13,12 @@ const CategoryTable = sequelize.define(
             type : DataTypes.STRING,
             allowNull : true,
             unique : false
-        },  
+        },
+        category_image : {
+            type : DataTypes.STRING,
+            allowNull : false,
+            unique : false
+        }  
     },
     {
         freezeTableName: true
