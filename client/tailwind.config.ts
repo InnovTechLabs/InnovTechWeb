@@ -9,6 +9,7 @@ const config: Config = {
   theme: {
     colors : {
       purple : '#8B54FF',
+      extralightpurple : "#ECDCFF",
       lightpurple : '#9664FF',
       darkpurple : '#5C28CA',
       yellow : "#FFD80D",

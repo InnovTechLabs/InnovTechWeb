@@ -150,3 +150,12 @@
 .rotate-anticlockwise{
   animation: rotate-anticlockwise 15s linear infinite;
 }
+
+
+.flip-vertical-half-horizontal {
+  transition: transform 0.5s ease;
+}
+
+.group-hover-flip-vertical-half-horizontal:hover .flip-vertical-half-horizontal {
+  transform: rotateY(180deg);
+}

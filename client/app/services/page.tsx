@@ -112,7 +112,7 @@ export default function Services() {
             <div className='space-y-5 lg:flex  md:space-x-5 lg:space-x-5 items-center'>
                   {categories.slice(0,4).map((category) => (
                     <div key={category.id}>
-                    <ServicesCard heading={category.category_name} description={category.category_description} image={category.category_image} />
+                    <ServicesCard heading={category.category_name} description={category.category_description} image={category.category_image} backgroundColor={"#FFFFFF"} />
                     </div>
                   ))}
             </div>
