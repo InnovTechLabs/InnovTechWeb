@@ -19,10 +19,10 @@ export const NavHeadings = [
         subsubPath : "/services/social-media-marketing"},
 
         {subText : "Graphics Design",
-        subsubPath : "/services/graphics-desigining"},
+        subsubPath : "/services/graphics-design"},
 
-        {subText : "Video Creation",
-        subsubPath : "/services/video-creation"},
+        {subText : "Video Animation",
+        subsubPath : "/services/video-animation"},
 
         {subText : "Mobile App Development",
         subsubPath : "/services/mobile-app-development"},
