@@ -159,3 +159,13 @@
 .group-hover-flip-vertical-half-horizontal:hover .flip-vertical-half-horizontal {
   transform: rotateY(180deg);
 }
+
+
+
+.flip-vertical-full-horizontal {
+  transition: transform 1s ease;
+}
+
+.group-hover-flip-vertical-full-horizontal:hover .flip-vertical-full-horizontal {
+  transform: rotateY(360deg);
+}

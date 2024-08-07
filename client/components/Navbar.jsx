@@ -41,7 +41,7 @@ export default function Navbar() {
                                 {heading.subpath.map((subheadings) => (
                                     <div key={subheadings.subText}>
                                         <Link href={subheadings.subsubPath}>
-                                            <div className='cursor-pointer bg-white text-black border-b-gray shadow-lg shadow-purple px-5 py-5 border-b-[1px] transition-all delay-200 ease-in-out hover:pl-10 hover:text-purple'>
+                                            <div className='cursor-pointer bg-white text-black border-b-gray shadow-2xl shadow-extralightpurple px-5 py-5 border-b-[1px] transition-all delay-200 ease-in-out hover:pl-10 hover:text-purple'>
                                                 {subheadings.subText}
                                             </div>
                                         </Link>
