@@ -34,9 +34,20 @@ export default function Navbar() {
 
             <div className='hidden xl:flex flex-row mr-16 px-16 py-6 border-[1px] [box-shadow:10_10px_0_0_]'>
                 {NavHeadings.map((heading, index) => 
-                    heading.subpath ? (
+                    heading.subpath.length > 0 ? (
                         <div key={heading.text} className='group flex flex-row items-center cursor-pointer relative tracking-wider px-3 py-1 transition-all duration-300 ease-in-out hover:bg-purple hover:text-white hover:[box-shadow:5px_5px_0_0_#010C2A] hover:rounded-md'>
-                            {heading.text}{<Image src={DropDown} alt = "DropDown" width={20} height={20}/>}
+                            
+                                <Link href={heading.path}>
+                                    <div className='flex flex-row items-center justify-center'>
+                                        <div>
+                                            {heading.text}
+                                        </div>
+                                        <div>
+                                            {<Image src={DropDown} alt = "DropDown" width={20} height={20}/>}
+                                        </div>
+                                    </div>
+                                </Link>
+                            
                             <div className="dropdown-menu absolute hidden transition-all delay-900 ease-in-out h-2 top-8 py-2 w-72 group-hover:grid">
                                 {heading.subpath.map((subheadings) => (
                                     <div key={subheadings.subText}>

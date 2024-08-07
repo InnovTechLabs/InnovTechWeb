@@ -1,7 +1,7 @@
 export const NavHeadings = [
     {text : "Home",
     path : "/home",
-    subpath : ""},
+    subpath : []},
 
     {text : "Services", 
     path : "/services",
@@ -35,10 +35,10 @@ export const NavHeadings = [
         subsubPath : "/about"},
 
         {subText : "Our Team",
-        subsubPath : "/page/our-team"},
+        subsubPath : "/page/team"},
 
         {subText : "Our FAQ",
-        subsubPath : "/page/our-faq"},
+        subsubPath : "/page/faq"},
 
         {subText : "Career",
         subsubPath : "/page/career"}
@@ -46,17 +46,17 @@ export const NavHeadings = [
 
     {text : "Portfolio",
     path : "/portfolio",
-    subpath : ""},
+    subpath : []},
 
     {text : "Blog",
     path : "/blog",
-    subpath : ""},
+    subpath : []},
 
     {text : "Contact",
     path : "/contact",
-    subpath : ""},
+    subpath : []},
 
     {text : "Search Icon",
     path : "/search",
-    subpath : ""}
+    subpath : []}
 ]

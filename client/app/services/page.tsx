@@ -26,6 +26,7 @@ import clientIcon from "@/public/assets/images/icon/client.svg"
 import accomplishedIcon from "@/public/assets/images/icon/accomplished.svg"
 import earthIcon from "@/public/assets/images/icon/earth.svg"
 import trophyIcon from "@/public/assets/images/icon/trophy.svg"
+import Link from 'next/link';
 
 
 
@@ -112,14 +113,19 @@ export default function Services() {
             <div className='space-y-5 lg:flex  md:space-x-5 lg:space-x-5 items-center'>
                   {categories.slice(0,4).map((category) => (
                     <div key={category.id}>
-                    <ServicesCard heading={category.category_name} description={category.category_description} image={category.category_image} backgroundColor={"#FFFFFF"} />
+                  
+                      <Link href={`services/${category.category_name.replace(" ", "-")}`}>
+                        <ServicesCard heading={category.category_name} description={category.category_description} image={category.category_image} backgroundColor={"#FFFFFF"} />
+                      </Link>
                     </div>
                   ))}
             </div>
             <div className='space-y-5 lg:flex md:space-x-5 lg:space-x-5 items-center'>
                   {categories.slice(4,7).map((category) => (
                     <div key={category.id}>
-                    <ServicesCard heading={category.category_name} description={category.category_description} image={category.category_image} />
+                      <Link href={`services/${category.category_name.replace(" ", "-")}`}>
+                          <ServicesCard heading={category.category_name} description={category.category_description} image={category.category_image} />
+                      </Link>
                     </div>
                   ))}
             </div>
