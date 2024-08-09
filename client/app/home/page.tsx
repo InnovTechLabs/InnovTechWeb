@@ -250,7 +250,7 @@ export default function Home() {
           </div>
         </div>
 
-        <FAQ/>
+        <FAQ bgColor={"bg-white"}/>
 
         <div className='py-10'>
           <div className='flex flex-col xl:flex-row items-center bg-black mx-10 [box-shadow:10_10_0_0#FFD80D]'>
