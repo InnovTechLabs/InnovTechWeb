@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import Preloader from "@/components/UI/Animation/Preloader"
 import Navbar from "@/components/Navbar"
@@ -18,11 +19,12 @@ import CompaniesSlider from "@/components/CompaniesSlider"
 import SpeechBubble from "@/components/UI/SpeechBubble"
 import BottomSlider from "@/components/BottomSlider"
 import BlogSlider from "@/components/UI/BlogSlider"
+import FAQ from "@/components/FAQ"
 
 import { NumberCardInfo } from '@/static/NumberCardInfo'
 import { ServiceCardInfo } from '@/static/ServiceCardInfo'
 import { technologies } from '@/static/Technologies'
-import FAQ from "@/components/FAQ"
+import generateSlug from '@/utils/slug'
 
 
 import About1 from "@/public/assets/images/img-box/about-1.png"
@@ -39,6 +41,10 @@ import glowingStar from "@/public/assets/images/img-box/testi-3.png"
 import oppo from "@/public/assets/images/img-box/testi-4.jpg"
 import downwardThred from "@/public/assets/images/mark/mark-testi-5.png"
 import circularthread from "@/public/assets/images/mark/mark-testi.png"
+import mark7 from "@/public/assets/images/mark/mark-7.png"
+import mark8 from "@/public/assets/images/mark/mark-8.png"
+import mark9 from "@/public/assets/images/mark/mark-9.png"
+import mark10 from "@/public/assets/images/mark/mark-10.png"
 
 import imgstyle from "@/public/styles/imageanimate.module.css"
 
@@ -177,7 +183,9 @@ export default function Home() {
             <div className='space-y-5 lg:flex  md:space-x-5 lg:space-x-5 items-center'>
                   {categories.slice(0,4).map((category) => (
                     <div key={category.id}>
-                    <ServicesCard heading={category.category_name} description={category.category_description} image={category.category_image} />
+                      <Link href = {`/services/${generateSlug(category.category_name)}`}>
+                        <ServicesCard heading={category.category_name} description={category.category_description} image={category.category_image} />
+                      </Link>
                     </div>
                   ))}
             </div>
@@ -328,14 +336,43 @@ export default function Home() {
         </div>
 
         <div className='flex-col items-center justify-center '>
-          <div className='flex-col text-center space-y-5'>
-            <StaticButton text={"News & Blog"}/>
-            <p className='text-3xl font-manrope font-extrabold'>Get Every Single Updated Articles</p>
+          <div className='flex flex-row justify-around items-center'>
+            <div className='hidden lg:block'>
+              <Image
+                src={mark7}
+                alt='mark7'
+                className={`${imgstyle['move-top-to-bottom']}`}
+              />
+            </div>
+            <div className='flex-col text-center space-y-5'>
+              <StaticButton text={"News & Blog"}/>
+              <p className='text-3xl font-manrope font-extrabold'>Get Every Single Updated Articles</p>
+            </div>
+            <div className='hidden lg:block'>
+              <Image
+                src={mark8}
+                alt='mark8'
+                className={`${imgstyle['pulse']}`}
+              />
+            </div>
           </div>
         </div>
 
         <div className='mx-10 my-10'>
           <BlogSlider/>
+        </div>
+
+        <div className='hidden lg:flex lg:flex-row lg:justify-between lg:items-center lg:mx-14 xl:mx-32 2xl:mx-52'>
+        <Image
+          src={mark9}
+          alt='mark9'
+          className={`${imgstyle['swing-anticlockwise']}`}
+        />
+        <Image
+          src={mark10}
+          alt='mark10'
+          className={`${imgstyle['swing-anticlockwise']}`}
+        />   
         </div>
 
                   

@@ -102,7 +102,7 @@ export default function Service({params} : {params : {service : string}}) {
           </div>
           <div className='bg-white space-y-48'>
             <div className='text-center space-y-10 py-24'>
-              <div>
+              <div className='flex flex-row justify-center items-center'>
                 <StaticButton text={"Working Process"}/>
               </div>
               <div>
@@ -174,7 +174,9 @@ export default function Service({params} : {params : {service : string}}) {
                 />
               </div>
               <div className='md:w-1/2 space-y-10'>
-                <StaticButton text={"Why Choose Us"}/>
+                <div className='flex flex-row justify-start items-center'>
+                  <StaticButton text={"Why Choose Us"}/>
+                </div>
                 <h1 className=' text-5xl font-bold'>We’re Professional Digital Services Provider Agency</h1>
                 <p>Sit amet consectetur adipiscing elit mollis eget scelerisque nibh mattis nulla. Suspendisse euismod bibendum mi alique Dignissim neque viverra tempor enim proin tristique lectus</p>            
                 <div className='flex flex-col space-y-5'>
@@ -321,7 +323,9 @@ export default function Service({params} : {params : {service : string}}) {
                     />
                 </div>
                 <div className='space-y-10'> 
-                  <StaticButton text={"Business Analysis"}/>
+                  <div className='flex flex-row justify-start items-center'>
+                    <StaticButton text={"Business Analysis"}/>
+                  </div>
                   <p className='text-4xl font-bold'>Build Your Business Grateful & Successful Together</p>
                   <p>Sit amet consectetur adipiscing elit. Ornare molestie ultrices accumsan nunc. Dolor feugiat etiam egestas volutpat, tempus maecenas quam sagittis. Tortor ut dictumst sit euismod quis fringilla. Laoreet tempor morbi adipiscing Orci, quisque vitae nisl, sed sit nec feugiat amet. In feugiat</p>
                   <div className='flex flex-row space-x-3'>

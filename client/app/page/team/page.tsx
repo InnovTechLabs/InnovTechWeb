@@ -35,7 +35,7 @@ export default function Team() {
     <Navbar/>
     <div className='flex flex-col space-y-10 py-10 md:flex-row justify-around items-center px-10'>
             <div>
-                <CurrentPageCard text={"About Us"} parent={"Home"} child={"About Us"}/>
+                <CurrentPageCard text={"Our Team"} parent={"Home"} child={"Team"}/>
             </div>
             <div className={`${imgStyle['']}`}>
                 <Image
@@ -96,7 +96,6 @@ export default function Team() {
           <SpeechBubbleSecondary/>
           <SpeechBubbleSecondary/>
           <SpeechBubbleSecondary/>
-
         </div>
       </div>
       <NewsLetter/>

@@ -110,21 +110,12 @@ export default function Services() {
           </div>
 
           <div className='space-y-5 sm:flex-col md:flex-col lg:flex md:space-y-5 lg:space-x-5 items-center'>
-            <div className='space-y-5 lg:flex  md:space-x-5 lg:space-x-5 items-center'>
-                  {categories.slice(0,4).map((category) => (
+            <div className='grid grid-cols-1 md:grid-cols-4 gap-10'>
+                  {categories.map((category) => (
                     <div key={category.id}>
                   
                       <Link href={`services/${category.category_name.replace(" ", "-")}`}>
                         <ServicesCard heading={category.category_name} description={category.category_description} image={category.category_image} backgroundColor={"#FFFFFF"} />
-                      </Link>
-                    </div>
-                  ))}
-            </div>
-            <div className='space-y-5 lg:flex md:space-x-5 lg:space-x-5 items-center'>
-                  {categories.slice(4,7).map((category) => (
-                    <div key={category.id}>
-                      <Link href={`services/${category.category_name.replace(" ", "-")}`}>
-                          <ServicesCard heading={category.category_name} description={category.category_description} image={category.category_image} />
                       </Link>
                     </div>
                   ))}

@@ -12,6 +12,7 @@ const config: Config = {
       extralightpurple : "#ECDCFF",
       lightpurple : '#9664FF',
       darkpurple : '#5C28CA',
+      pink : "#F43FE2",
       yellow : "#FFD80D",
       black : "#120A21",
       gray :  "#F2F0ED",

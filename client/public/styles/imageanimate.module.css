@@ -107,8 +107,31 @@
   100% {
     transform: translateX(200%);
   }
-  
-  
+}
+
+
+@keyframes swing-clockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes swing-anticlockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-45deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 .move-left-to-right {
@@ -149,6 +172,14 @@
 
 .rotate-anticlockwise{
   animation: rotate-anticlockwise 15s linear infinite;
+}
+
+.swing-clockwise {
+  animation: swing-clockwise 2s ease-in-out infinite;
+}
+
+.swing-anticlockwise {
+  animation: swing-anticlockwise 2s ease-in-out infinite;
 }
 
 

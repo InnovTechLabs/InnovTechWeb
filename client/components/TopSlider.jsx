@@ -1,6 +1,8 @@
 'use client'
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import generateSlug from "@/utils/slug";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle, faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import Image from "next/image";
@@ -65,16 +67,16 @@ export default function TopSlider(props) {
             {sliderData.map((data, index) => (
               <div key={index} className="space-y-10">
                 <div className={`w-[400] sm:w-[500] ${activeIndex === index? "" : "hidden"}`}>
-                  <StaticButton text={`Best ${data.category_name} Agency In Nepal`}/>
+                    <StaticButton text={`Best ${data.category_name} Agency In Nepal`}/>
                 </div>
                 <div className={`space-y-5 ${activeIndex === index ? "" : "hidden"}`}>
                   <h1 className="text-6xl w-min text-navyblue capitalize underline underline-offset-8 font-bold">{data.category_name}</h1>
                   <h3 className="">{data.category_description}</h3>
                 </div>
                 <div className = {`flex flex-row space-x-5 items-center ${activeIndex === index ? "" : "hidden"}`}>
-                  <button>
+                <Link href={`/services/${generateSlug(data.category_name)}`}>
                     <AnimateButtonSecondary text={"Discover More"}/>
-                  </button>
+                </Link>
                   <button onClick={() => handlePlayVideo(data.id)}>
                     <PlayButton/>
                   </button>
