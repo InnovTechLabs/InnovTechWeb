@@ -34,7 +34,7 @@ export default function Portfolio() {
         <p className='text-4xl font-bold text-center'>We’ve Done 2560+ Global Projects Take a Looks Work Gallery</p>
         <div className='flex flex-col justify-center items-center'>
           {/* Container for the project cards */}
-          <div className='grid grid-cols-1 md:grid-cols-3 gap-10 px-10 py-10'>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-10 py-10'>
             {projects.map((project) => (
               <div key={project.id}>
                 <ProjectsCard title={project.title} description={project.description} image={project.image} />

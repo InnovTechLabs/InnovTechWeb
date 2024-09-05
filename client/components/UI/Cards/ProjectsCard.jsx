@@ -22,7 +22,7 @@ export default function ProjectsCard({title, description, image}) {
                     <p>{description}</p>
                 </div>
             </div>
-            <div>
+            <div className='flex-none'>
                 <CircleButtonSecondary/>
             </div>
         </div>
